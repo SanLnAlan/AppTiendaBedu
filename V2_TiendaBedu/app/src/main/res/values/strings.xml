@@ -3,6 +3,15 @@
     <string name="catalogo">Catálogo</string>
     <string name="inventario">Inventario</string>
     <string name="carrito">Carrito</string>
+    <string name="olvide_password"><u>Olvide password!</u></string>
+    <string name="login">Email</string>
+    <string name="password">Password</string>
+    <string name="logging">enviar</string>
+    <string name="register"><u>registrate!</u></string>
+    <string name="nombre">Nombre</string>
+    <string name="apellidos">Apellidos</string>
+    <string name="confirmar_password">Confirmar Password</string>
+    <string name="link_login"><u>Ya tienes cuenta! Accede!</u></string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 

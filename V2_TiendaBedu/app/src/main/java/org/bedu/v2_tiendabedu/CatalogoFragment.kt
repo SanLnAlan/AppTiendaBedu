@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -21,12 +23,31 @@ class CatalogoFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
+    private lateinit var recyclerCatalogo: RecyclerView
+
+    val productos = listOf(
+        //Producto(0,"jeans","Descripción de jeans","ropa","LEVIS",499f,10,R.drawable.jeans),
+        Producto(1,"audífonos","Descripción de audífonos","hogar","SONY",899f,10,R.drawable.headphone),
+        Producto(2,"televisión","Descripción de televisión","hogar","SAMSUNG",8299f,10,R.drawable.television),
+        Producto(3,"microhondas","Descripción de microhondas","hogar","LG",1399f,10,R.drawable.microhondas),
+        Producto(4,"tennis","Descripción de tennis","ropa","CONVERSE",799f,10,R.drawable.tennis)
+    )
+
+    fun initRecycler(){
+        recyclerCatalogo.layoutManager = LinearLayoutManager(context)
+        val adapter = ProductAdapter(productos)
+        recyclerCatalogo.adapter = adapter
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
+
+        //recyclerCatalogo = requiereView!!.findViewById(R.id.recyclerCatalogo)
+        //initRecycler()
     }
 
     override fun onCreateView(
@@ -35,6 +56,12 @@ class CatalogoFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_catalogo, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        recyclerCatalogo = view.findViewById(R.id.recyclerCatalogo)
+        initRecycler()
     }
 
     companion object {

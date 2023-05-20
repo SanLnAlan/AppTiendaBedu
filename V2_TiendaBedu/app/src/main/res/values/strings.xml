@@ -18,11 +18,16 @@
     <string name="modelo_del_producto">Modelo del producto</string>
     <string name="campo_obligatorio">Campo obligatorio</string>
     <string name="campo_error_datos">Error ingresar letras y números</string>
+    <string name="user">usuario</string>
+    <string name="userCerrar">Cerrar sesión</string>
+    <string name="userDetails">Detalles de la cuenta</string>
     <string-array name="type_model">
         <item>Selecciona tipo Producto</item>
         <item>Calzado</item>
         <item>Ropa</item>
         <item>Hogar</item>
     </string-array>
+
+
 
 </resources>

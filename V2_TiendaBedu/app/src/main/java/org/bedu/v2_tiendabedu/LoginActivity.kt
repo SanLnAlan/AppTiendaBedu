@@ -22,11 +22,17 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
         if (LOGGINGCONT == 0){
-            val admin = User(
+            /*val admin = User(
                 nombre = "Admin",
                 apellidos = "Usuario Adminstrado",
                 email = "admin@bedu.com",
                 password = "password"
+            )*/
+            val admin = User(
+                nombre = "Admin",
+                apellidos = "Usuario Adminstrado",
+                email = "",
+                password = ""
             )
             admin.nombre
         }

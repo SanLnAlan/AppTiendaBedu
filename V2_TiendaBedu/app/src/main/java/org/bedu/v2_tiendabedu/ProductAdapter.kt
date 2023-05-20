@@ -3,6 +3,7 @@ package org.bedu.v2_tiendabedu
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -16,9 +17,11 @@ class ProductAdapter (val productList: List<Producto>): RecyclerView.Adapter<Pro
 
     override fun getItemCount(): Int = productList.size
 
-
+    //private lateinit var increase_button : Button
     override fun onBindViewHolder(holder: ProductHolder, position: Int) {
         holder.render(productList[position])
+
+
     }
 
     class ProductHolder(val view: View): RecyclerView.ViewHolder(view){
@@ -29,6 +32,33 @@ class ProductAdapter (val productList: List<Producto>): RecyclerView.Adapter<Pro
 
             view.findViewById<ImageView>(R.id.productImageV).setImageResource(productList.image)
 
+
+            val increaseButton = view.findViewById<Button>(R.id.increase)
+            val decreaseButton = view.findViewById<Button>(R.id.decrease)
+
+            var quantityNumber = 0
+
+            increaseButton.setOnClickListener {
+                //if (quantityNumber < stock)
+                quantityNumber += 1
+                updateData(quantityNumber)
+            }
+
+            decreaseButton.setOnClickListener {
+                if (quantityNumber > 0){
+                    quantityNumber -= 1
+                    updateData(quantityNumber)
+                }
+            }
+
+
         }
+
+        private fun updateData(quantityNumber: Int) {
+            val quantityView = view.findViewById<TextView>(R.id.integer_number)
+            quantityView.text = "" + quantityNumber.toString()
+        }
+
+
     }
 }

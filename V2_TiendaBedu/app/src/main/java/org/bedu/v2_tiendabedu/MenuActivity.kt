@@ -3,6 +3,7 @@ package org.bedu.v2_tiendabedu
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
 import android.view.inputmethod.InputBinding
 import android.widget.Button
 import androidx.fragment.app.Fragment
@@ -26,6 +27,12 @@ class MenuActivity : AppCompatActivity() {
 
         setCurrentFragment(catalogoFragment)
         createFragments()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val inflater =  menuInflater
+        inflater.inflate(R.menu.user_menu, menu)
+        return super.onCreateOptionsMenu(menu)
     }
 
     private fun createFragments() {

@@ -26,7 +26,7 @@ class CatalogoFragment : Fragment() {
     private lateinit var recyclerCatalogo: RecyclerView
 
     val productos = listOf(
-        //Producto(0,"jeans","Descripción de jeans","ropa","LEVIS",499f,10,R.drawable.jeans),
+        Producto(0,"jeans","Descripción de jeans","ropa","LEVIS",499f,10,R.drawable.jeans),
         Producto(1,"audífonos","Descripción de audífonos","hogar","SONY",899f,10,R.drawable.headphone),
         Producto(2,"televisión","Descripción de televisión","hogar","SAMSUNG",8299f,10,R.drawable.television),
         Producto(3,"microhondas","Descripción de microhondas","hogar","LG",1399f,10,R.drawable.microhondas),
@@ -65,15 +65,6 @@ class CatalogoFragment : Fragment() {
     }
 
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment CatalogoFragment.
-         */
-        // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
             CatalogoFragment().apply {

@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="Tipoproducto">Tipo de producto</string>
+    <string name="user">usuario</string>
+    <string name="userCerrar">Cerrar sesión</string>
 </resources>

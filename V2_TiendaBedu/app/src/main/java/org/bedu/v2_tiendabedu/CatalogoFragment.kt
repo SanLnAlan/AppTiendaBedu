@@ -7,6 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import org.bedu.v2_tiendabedu.models.inventario.listaDeInventario
+import org.bedu.v2_tiendabedu.models.inventario.Inventario
+import org.bedu.v2_tiendabedu.models.producto.Producto
+import java.util.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -25,17 +29,22 @@ class CatalogoFragment : Fragment() {
 
     private lateinit var recyclerCatalogo: RecyclerView
 
-    val productos = listOf(
+    /*val productos = listOf(
         Producto(0,"jeans","Descripción de jeans","ropa","LEVIS",499f,10,R.drawable.jeans),
         Producto(1,"audífonos","Descripción de audífonos","hogar","SONY",899f,10,R.drawable.headphone),
         Producto(2,"televisión","Descripción de televisión","hogar","SAMSUNG",8299f,10,R.drawable.television),
         Producto(3,"microhondas","Descripción de microhondas","hogar","LG",1399f,10,R.drawable.microhondas),
         Producto(4,"tennis","Descripción de tennis","ropa","CONVERSE",799f,10,R.drawable.tennis)
-    )
+    )*/
+
+
+    val productos : LinkedList<Producto> = listaDeInventario
+        //listaDeInventario
+
 
     fun initRecycler(){
         recyclerCatalogo.layoutManager = LinearLayoutManager(context)
-        val adapter = ProductAdapter(productos)
+        val adapter = ProductAdapter(productos.toList())
         recyclerCatalogo.adapter = adapter
     }
 

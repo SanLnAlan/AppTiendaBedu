@@ -4,10 +4,15 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
+import android.view.MenuItem
 import android.view.inputmethod.InputBinding
 import android.widget.Button
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import org.bedu.v2_tiendabedu.databinding.ActivityMenuBinding
+import org.bedu.v2_tiendabedu.models.inventario.Inventario
+import org.bedu.v2_tiendabedu.models.inventario.listaDeInventario
+import kotlin.math.log
 
 
 class MenuActivity : AppCompatActivity() {
@@ -27,12 +32,40 @@ class MenuActivity : AppCompatActivity() {
 
         setCurrentFragment(catalogoFragment)
         createFragments()
+
+        Inventario.agregarProductoInventario(
+            "Zapato Blanco", "Zapato casual",
+            "calzado", "B-22", 350f, 20, 22.5f
+        )
+        Inventario.agregarProductoInventario(
+            "Tenis Blanco", "Zapato casual",
+            "calzado", "B-23", 550f, 10, 23f
+        )
+        Inventario.agregarProductoInventario(
+            "Refrigerador Mabe", "Refrigerador 10 pies cubicos",
+            "Hogar", "Mabe-12", 100000f, 10, numeroSerie = "MB-'1112"
+        )
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         val inflater =  menuInflater
         inflater.inflate(R.menu.user_menu, menu)
         return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when(item.itemId){
+            R.id.userClose -> {
+                finish()
+                true
+            }
+            R.id.userDetails -> {
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     private fun createFragments() {

@@ -7,8 +7,10 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import org.bedu.v2_tiendabedu.models.orden.Orden
+import org.bedu.v2_tiendabedu.models.producto.Producto
 
-class ProductAdapter (val productList: List<Producto>): RecyclerView.Adapter<ProductAdapter.ProductHolder>(){
+class ProductAdapter(val productList: List<org.bedu.v2_tiendabedu.models.producto.Producto>): RecyclerView.Adapter<ProductAdapter.ProductHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -30,7 +32,8 @@ class ProductAdapter (val productList: List<Producto>): RecyclerView.Adapter<Pro
             view.findViewById<TextView>(R.id.productDescriptionTv).text = productList.descripcion
             view.findViewById<TextView>(R.id.productPriceTv).text = "$" + productList.precio.toString()
 
-            view.findViewById<ImageView>(R.id.productImageV).setImageResource(productList.image)
+            //view.findViewById<ImageView>(R.id.productImageV).setImageResource(productList.image)
+            view.findViewById<ImageView>(R.id.productImageV).setImageResource(R.drawable.jeans)
 
 
             val increaseButton = view.findViewById<Button>(R.id.increase)

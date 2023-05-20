@@ -14,8 +14,9 @@
     <string name="link_login"><u>Ya tienes cuenta! Accede!</u></string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="Tipoproducto">Tipo de producto</string>
+    <string name="modelo_del_producto">Modelo del producto</string>
     <string-array name="type_model">
-        <item></item>
         <item>Calzado</item>
         <item>Ropa</item>
         <item>Hogar</item>

@@ -1,92 +1,156 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:padding="30dip"
     android:id="@+id/formStock"
     android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/txtProductName"
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="50dip"
-        android:hint="Nombre del producto"
-        android:importantForAutofill="no"
-        android:inputType="text" />
+        android:layout_height="wrap_content"
+        app:boxBackgroundColor="@color/white">
+        <EditText
+            android:id="@+id/txtProductName"
+            android:layout_width="350dp"
+            android:layout_height="50dip"
+            android:importantForAccessibility="no"
+            android:hint="Nombre del producto"
+            android:importantForAutofill="no"
+            android:inputType="text"
+             />
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <EditText
-        android:id="@+id/txtProductDesc"
+
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="50dip"
-        android:hint="Descripción producto"
-        android:importantForAutofill="no"
-        android:inputType="text" />
+        android:layout_height="wrap_content"
+        app:boxBackgroundColor="@color/white">
 
-    <EditText
-        android:id="@+id/txtProductModel"
-        android:layout_marginTop="15dip"
+        <EditText
+            android:id="@+id/txtProductDesc"
+            android:layout_width="350dp"
+            android:layout_height="50dip"
+            android:hint="Descripción producto"
+            android:importantForAccessibility="no"
+            android:importantForAutofill="no"
+            android:inputType="text" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="50dip"
-        android:hint="Modelo del producto"
-        android:importantForAutofill="no"
-        android:inputType="textEmailAddress" />
+        android:layout_height="wrap_content"
+        app:boxBackgroundColor="@color/white">
 
-    <Spinner
-        android:id="@+id/static_spinner"
+
+        <EditText
+            android:id="@+id/txtProductModel"
+            android:layout_width="350dp"
+            android:layout_height="50dip"
+            android:layout_marginTop="15dip"
+            android:hint="@string/modelo_del_producto"
+            android:importantForAccessibility="no"
+            android:importantForAutofill="no"
+            android:inputType="text" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:contentDescription="Descripción del spinner"
-        android:layout_height="50dip"
-        android:layout_marginTop="15dip"
-        android:layout_marginBottom="30dip" />
+        android:layout_height="wrap_content"
+        app:boxBackgroundColor="@color/white">
 
-    <EditText
-        android:id="@+id/txtSerieNumber"
+        <Spinner
+            android:id="@+id/static_spinner"
+            android:layout_width="350dp"
+            android:layout_height="50dip"
+            android:layout_marginTop="15dip"
+            android:layout_marginBottom="30dip"
+            android:prompt="@string/Tipoproducto"
+            android:contentDescription="Tipos"
+            android:spinnerMode="dialog" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="50dip"
-        android:hint="Número serie"
-        android:importantForAutofill="no"
-        android:enabled="false"
-        android:layout_marginTop="15dip"
-        android:layout_marginBottom="30dip" />
+        android:layout_height="wrap_content"
+        app:boxBackgroundColor="@color/white">
 
-    <EditText
-        android:id="@+id/txtProductPrice"
+        <EditText
+            android:id="@+id/txtSerialNumber"
+            android:layout_width="350dp"
+            android:layout_height="50dip"
+            android:layout_marginTop="15dip"
+            android:layout_marginBottom="30dip"
+            android:enabled="false"
+            android:hint="Número serie"
+            android:importantForAccessibility="no"
+            android:importantForAutofill="no"
+            android:inputType="number"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="50dip"
-        android:hint="Precio del producto"
-        android:importantForAutofill="no"
-        android:layout_marginTop="15dip"
-        android:layout_marginBottom="30dip" />
+        android:layout_height="wrap_content"
+        app:boxBackgroundColor="@color/white">
 
-    <EditText
-        android:id="@+id/txtStockcProduct"
+        <EditText
+            android:id="@+id/txtSize"
+            android:layout_width="350dp"
+            android:layout_height="50dip"
+            android:layout_marginTop="15dip"
+            android:layout_marginBottom="30dip"
+            android:enabled="false"
+            android:hint="Talla"
+            android:importantForAccessibility="no"
+            android:importantForAutofill="no"
+            android:inputType="number" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="50dip"
-        android:hint="Cantidad dle producro"
-        android:importantForAutofill="no"
-        android:layout_marginTop="15dip"
-        android:layout_marginBottom="30dip" />
+        android:layout_height="wrap_content"
+        app:boxBackgroundColor="@color/white">
 
+        <EditText
+            android:id="@+id/txtProductPrice"
+            android:layout_width="350dp"
+            android:layout_height="50dip"
+            android:layout_marginTop="15dip"
+            android:layout_marginBottom="30dip"
+            android:hint="Precio del producto"
+            android:importantForAccessibility="no"
+            android:importantForAutofill="no"
+            android:inputType="numberDecimal" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:boxBackgroundColor="@color/white">
+
+        <EditText
+            android:id="@+id/txtStockcProduct"
+            android:layout_width="350dp"
+            android:layout_height="50dip"
+            android:layout_marginTop="15dip"
+            android:layout_marginBottom="15dip"
+            android:hint="Cantidad del producro"
+            android:importantForAccessibility="no"
+            android:importantForAutofill="no"
+            android:inputType="number" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/btnRegister"
-        android:layout_height="wrap_content"
+        android:id="@+id/btnStock"
         android:layout_width="wrap_content"
-        android:text="@string/logging"
-        android:enabled="false"
-        android:layout_gravity="center_horizontal"
-        android:paddingLeft="15dip"
-        android:paddingRight="15dip" />
-
-    <TextView android:id="@+id/stock_error"
-        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dip"
-        android:layout_marginBottom="40dip"
-
-        android:gravity="center"
-        android:textSize="20sp"
-        android:textColor="#0b84aa"/>
+        android:layout_gravity="center_horizontal"
+        android:enabled="true"
+        android:paddingLeft="15dip"
+        android:paddingRight="15dip"
+        android:text="@string/logging" />
 
 
 </LinearLayout>

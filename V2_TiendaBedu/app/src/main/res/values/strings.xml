@@ -16,7 +16,10 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="Tipoproducto">Tipo de producto</string>
     <string name="modelo_del_producto">Modelo del producto</string>
+    <string name="campo_obligatorio">Campo obligatorio</string>
+    <string name="campo_error_datos">Error ingresar letras y números</string>
     <string-array name="type_model">
+        <item>Selecciona tipo Producto</item>
         <item>Calzado</item>
         <item>Ropa</item>
         <item>Hogar</item>

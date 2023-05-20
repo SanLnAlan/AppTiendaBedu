@@ -35,6 +35,8 @@ class HandleLogging {
                 "EMAIL" -> VALEMAIL
                 "PASSWORD" -> VALPASSWORD
                 "ALPHANUMERIC"-> VALALPHANUM
+                "SERIALNUM"-> VALSERIALNUM
+
                 else -> "fa#%#"
 
 

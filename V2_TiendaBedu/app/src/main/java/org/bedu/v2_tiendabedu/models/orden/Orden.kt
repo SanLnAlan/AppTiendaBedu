@@ -1,7 +1,7 @@
-package orden
+package org.bedu.v2_tiendabedu.models.orden
 
 import impuesto.Impuesto
-import inventario.Inventario
+import org.bedu.v2_tiendabedu.models.inventario.Inventario
 import java.util.*
 
 

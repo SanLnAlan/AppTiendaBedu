@@ -1,13 +1,15 @@
-package inventario
+package org.bedu.v2_tiendabedu.models.inventario
 
+import android.util.Log
 import org.bedu.v2_tiendabedu.models.producto.CalzadoRopa
 import org.bedu.v2_tiendabedu.models.producto.Producto
 import org.bedu.v2_tiendabedu.models.producto.Hogar
 import java.util.*
+var listaDeInventario = LinkedList<Producto>()
 
 class Inventario {
     companion object {
-        var listaDeInventario = LinkedList<Producto>()
+
 
         fun agregarInventario(producto: Producto) {
             listaDeInventario.addLast(producto)
@@ -37,6 +39,8 @@ class Inventario {
                 )
                 agregarInventario(productoHogar)
             }
+            Log.d("Inventario","List-> $listaDeInventario")
+
         }
 
         // Se usa una función lambda

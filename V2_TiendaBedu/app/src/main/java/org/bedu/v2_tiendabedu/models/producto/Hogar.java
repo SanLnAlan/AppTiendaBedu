@@ -5,8 +5,8 @@ public class Hogar extends Producto {
     protected String numeroSerie;
 
     public Hogar(String nombre, String numeroSerie, String modelo, String descripcion, float precio,
-                 String tipo, int stock) {
-        super(id, nombre, descripcion, tipo, modelo, precio, stock);
+                 String tipo, int stock, String imgUrl) {
+        super(id, nombre, descripcion, tipo, modelo, precio, stock, imgUrl);
         this.numeroSerie = numeroSerie;
     }
 

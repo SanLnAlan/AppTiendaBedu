@@ -8,7 +8,8 @@ abstract class Producto(
     var tipo: String,
     var modelo: String,
     var precio: Float,
-    var stock: Int = 0
+    var stock: Int = 0,
+    var imgUrl: String = "none"
 ) {
     // Variable estática
     companion object {
@@ -51,6 +52,7 @@ abstract class Producto(
            Modelo del producto: ${this.modelo}
            Tipo del producto: ${this.tipo}
            Stock del producto: ${this.stock}
+           Url del producto: ${this.imgUrl}
         """.trimIndent()
     }
 

@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import org.bedu.v2_tiendabedu.models.orden.Orden
 import org.bedu.v2_tiendabedu.models.producto.Producto
 
@@ -27,13 +28,14 @@ class ProductAdapter(val productList: List<org.bedu.v2_tiendabedu.models.product
     }
 
     class ProductHolder(val view: View): RecyclerView.ViewHolder(view){
+
+       private val photo: ImageView = view.findViewById<ImageView>(R.id.productImageV)
         fun render(productList: Producto){
             view.findViewById<TextView>(R.id.productNameTv).text = productList.nombre
             view.findViewById<TextView>(R.id.productDescriptionTv).text = productList.descripcion
             view.findViewById<TextView>(R.id.productPriceTv).text = "$" + productList.precio.toString()
-
-            //view.findViewById<ImageView>(R.id.productImageV).setImageResource(productList.image)
-            view.findViewById<ImageView>(R.id.productImageV).setImageResource(R.drawable.jeans)
+            Glide.with(photo.context).load(productList.imgUrl)
+                .override(100, 100).into(photo)
 
 
             val increaseButton = view.findViewById<Button>(R.id.increase)

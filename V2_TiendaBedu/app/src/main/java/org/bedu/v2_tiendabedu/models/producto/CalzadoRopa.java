@@ -7,8 +7,8 @@ public class CalzadoRopa extends Producto {
 
 
     public CalzadoRopa(String nombre, String descripcion, float precio,
-                       String modelo, float talla, String tipo, int stock) {
-        super(id, nombre, descripcion, tipo, modelo, precio, stock);
+                       String modelo, float talla, String tipo, int stock, String imgUrl) {
+        super(id, nombre, descripcion, tipo, modelo, precio, stock,imgUrl);
         this.talla = talla;
     }
 

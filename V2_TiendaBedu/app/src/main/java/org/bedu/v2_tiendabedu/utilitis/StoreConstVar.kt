@@ -1,6 +1,7 @@
 package org.bedu.v2_tiendabedu.utilitis
 
 var LOGGINGCONT: Int = 0
+var ACCESCONTROL: Int = 0
 const val VALNAMES: String = "^([A-Za-zÑñÁáÉéÍíÓóÚú]+['\\-]{0,1}[A-Za-zÑñÁáÉéÍíÓóÚú]+)(\\s{0,1}([A-Za-zÑñÁáÉéÍíÓóÚú]+['\\-]{0,1}[A-Za-zÑñÁáÉéÍíÓóÚú]+)){0,1}\$"
 const val VALEMAIL: String = "^([a-z0-9_\\.-]+)@([\\da-z\\.-]+)\\.([a-z\\.]{2,6})\$"
 const val VALPASSWORD: String = "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@\$%^&*-]).{8,}\$"

@@ -23,19 +23,20 @@ class Inventario {
             precio: Float,
             stock: Int = 0,
             talla: Float = 0f,
-            numeroSerie: String = " "
+            numeroSerie: String = " ",
+            urlImagen: String = "https://tinyurl.com/y6zyt3uu"
         ) {
             val tipoVal = tipo.lowercase()
             if (tipoVal == "ropa" || tipoVal == "calzado") {
                 val productoCalzadoRopa = CalzadoRopa(
-                    nombre, descripcion, precio, modelo, talla, tipo, stock
+                    nombre, descripcion, precio, modelo, talla, tipo, stock,urlImagen
                 )
                 agregarInventario(productoCalzadoRopa)
 
             } else if (tipoVal == "hogar") {
                 val productoHogar = Hogar(
                     nombre, numeroSerie, modelo,
-                    descripcion, precio, tipo, stock
+                    descripcion, precio, tipo, stock,urlImagen
                 )
                 agregarInventario(productoHogar)
             }

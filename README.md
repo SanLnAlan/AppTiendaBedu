@@ -20,12 +20,14 @@ Para ello seguir las siguientes instruciones:
 
 ## Menú de aplicación
 
-Al compilar el el MainActivity.kt se observará el siguiente menu:
+Al compilar el el MainActivity.kt se observará la siguiente pantalla:
 
-***(Screenshot de la pantalla de login)***
+![](https://github.com/SanLnAlan/AppTiendaBedu/blob/main/Im%C3%A1genes_TiendaBedu/login_TiendaBedu.jpeg)
+
+*Imagen 1: Pantalla de inicio de sesión*
 
 
-Para pode ingresar a la aplicación usa el user de pruebas del demo:
+Para poder ingresar a la aplicación usa el user de pruebas del demo:
 
 User: Admin
 
@@ -33,6 +35,16 @@ Cotraseña: password
 
 
 ## Acerca de
+
+La aplicación se trata de una tienda en línea, en la que se puede escoger entre varios productos y el número deseado de los mismos. Se accede al catálogo de productos y a las demás funciones una vez que se inicie sesión. Una vez iniciada la sesión, la pantalla se verá de la siguiente manera:
+
+![](https://github.com/SanLnAlan/AppTiendaBedu/blob/main/Im%C3%A1genes_TiendaBedu/catalogo_TiendaBedu.jpeg)
+
+*Imagen 2: Catálogo de productos*
+
+
+## Información de contacto
+
 
 Cualquier aclaración dirigirse con:
 

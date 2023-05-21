@@ -46,8 +46,8 @@ class ProductAdapter(val productList: List<org.bedu.v2_tiendabedu.models.product
             view.findViewById<TextView>(R.id.productNameTv).text = productList.nombre
             view.findViewById<TextView>(R.id.productDescriptionTv).text = productList.descripcion
             view.findViewById<TextView>(R.id.productPriceTv).text = "$" + productList.precio.toString()
-            Glide.with(photo.context).load(productList.imgUrl)
-                .override(100, 100).into(photo)
+            Glide.with(photo.context).load(productList.imgUrl).
+            override(100, 100).into(photo)
 
 
             val increaseButton = view.findViewById<Button>(R.id.increase)

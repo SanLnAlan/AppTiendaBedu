@@ -15,7 +15,22 @@ Para ello seguir las siguientes instruciones:
 
 * Clonar el repositorio: git clone https://github.com/SanLnAlan/AppTiendaBedu.git
 * Abrir el proyecto con el Android Studio.
-* 
+* Dirigirse al archivo principal (MainActivity) de proyecto y ejecutarlo.
+
+
+## Menú de aplicación
+
+Al compilar el el MainActivity.kt se observará el siguiente menu:
+
+***(Screenshot de la pantalla de login)***
+
+
+Para pode ingresar a la aplicación usa el user de pruebas del demo:
+
+User: Admin
+
+Cotraseña: password
+
 
 ## Acerca de
 

@@ -1,5 +1,6 @@
 package org.bedu.v2_tiendabedu
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -61,6 +62,8 @@ class MenuActivity : AppCompatActivity() {
                 true
             }
             R.id.userDetails -> {
+                val intent = Intent(this, AccountDetailsActivity::class.java)
+                startActivity(intent)
                 true
             }
             else -> super.onOptionsItemSelected(item)

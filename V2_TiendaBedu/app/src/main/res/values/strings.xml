@@ -31,11 +31,11 @@
     </string-array>
     <!--Array con los valores de la cabecera de la tabla-->
     <string-array name="cabecera_tabla">
-        <item>Id de la fila</item>
-        <item>Valor 0</item>
-        <item>Valor 2</item>
-        <item>Valor 3</item>
-        <item>Valor 4</item>
+        <item>Id Producto</item>
+        <item>Descripción Producto</item>
+        <item>Cantidad Producto</item>
+        <item>Precio Producto</item>
+        <item>Estado Producto</item>
     </string-array>
 
 </resources>

@@ -64,8 +64,8 @@ class ProductAdapter(val productList: List<org.bedu.v2_tiendabedu.models.product
                 }else if(quantityNumber > 1){
                     orden.actualizarNumCantidadProducto(productList.id,quantityNumber)
                 }
-                Log.i("tag ->","${orden.printListaProductos()}")
-                Log.i("otrotag ->","${orden.getObjetoProducto()["Cantidad"]}")
+               // Log.i("tag ->","${orden.printListaProductos()}")
+               // Log.i("otrotag ->","${orden.getObjetoProducto()["Cantidad"]}")
 
                 updateData(quantityNumber)
             }

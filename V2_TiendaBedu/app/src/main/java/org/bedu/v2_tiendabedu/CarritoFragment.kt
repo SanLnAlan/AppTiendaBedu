@@ -2,6 +2,7 @@ package org.bedu.v2_tiendabedu
 
 import android.app.Activity
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -53,16 +54,17 @@ class CarritoFragment : Fragment() {
 
         val tabla = Tabla(context as Activity?, view.findViewById(R.id.tabla) )
         tabla.agregarCabecera(R.array.cabecera_tabla)
-        for (i in 0..14) {
-            val elementos = ArrayList<String>()
-            elementos.add(Integer.toString(i))
-            elementos.add("Casilla [$i, 0]")
-            elementos.add("Casilla [$i, 1]")
-            elementos.add("Casilla [$i, 2]")
-            elementos.add("Casilla [$i, 3]")
-            tabla.agregarFilaTabla(elementos)
+        if( orden.listaProducto.isNotEmpty()){
+            for (p in orden.listaProducto){
+                val elementos = ArrayList<String>()
+                elementos.add(p["_id"].toString())
+                elementos.add(p["Descripción"].toString())
+                elementos.add(p["Cantidad"].toString())
+                elementos.add(p["precio"].toString())
+                elementos.add(p["statusProducto"].toString())
+                tabla.agregarFilaTabla(elementos)
+            }
         }
-
     }
 
     companion object {

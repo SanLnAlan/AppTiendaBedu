@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">V2_TiendaBedu</string>
+    <string name="app_name">Tienda Bedu</string>
     <string name="catalogo">Catálogo</string>
     <string name="inventario">Inventario</string>
     <string name="carrito">Carrito</string>
@@ -21,12 +21,21 @@
     <string name="user">usuario</string>
     <string name="userCerrar">Cerrar sesión</string>
     <string name="userDetails">Detalles de la cuenta</string>
+    <string name="confirmar_button">Confirmar</string>
+    <string name="button_pagar">Pagar</string>
     <string-array name="type_model">
         <item>Selecciona tipo Producto</item>
         <item>Calzado</item>
         <item>Ropa</item>
         <item>Hogar</item>
     </string-array>
-
+    <!--Array con los valores de la cabecera de la tabla-->
+    <string-array name="cabecera_tabla">
+        <item>Id Producto</item>
+        <item>Descripción Producto</item>
+        <item>Cantidad Producto</item>
+        <item>Precio Producto</item>
+        <item>Estado Producto</item>
+    </string-array>
 
 </resources>

@@ -6,6 +6,8 @@ import java.util.*
 
 
 
+var arregloOrden = LinkedList<Orden>()
+
 enum class Estados {
     PENDIENTE, COMPLETA, SURTIDO
 }
@@ -15,6 +17,10 @@ class Orden(
 ) : Impuesto {
 
     private var objetoProducto: MutableMap<String, Any> = mutableMapOf()
+    fun getObjetoProducto(): MutableMap<String, Any>{
+        return objetoProducto
+    }
+
     var listaProducto = LinkedList<MutableMap<String, Any>>()
     var statusOrden = Estados.PENDIENTE
     private var totalOrden = 0f

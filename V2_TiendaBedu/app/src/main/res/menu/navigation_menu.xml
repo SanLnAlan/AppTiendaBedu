@@ -5,6 +5,7 @@
         android:id="@+id/nav_catalgo"
         android:title="@string/catalogo"
         android:icon="@drawable/baseline_warehouse_24"
+        android:iconTint="@color/primary"
         ></item>
 
     <item

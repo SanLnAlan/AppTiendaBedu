@@ -6,6 +6,14 @@
     android:orientation="vertical"
     android:padding="30dip">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="100dip"
+        android:layout_marginTop="15dip"
+        android:layout_marginBottom="30dip"
+        android:src="@drawable/logo"/>
+
+
     <EditText
         android:id="@+id/txtEmail"
         android:layout_width="match_parent"
@@ -32,6 +40,7 @@
         android:layout_gravity="center_horizontal"
         android:paddingLeft="15dip"
         android:paddingRight="15dip"
+        android:backgroundTint="@color/primary"
         android:text="@string/logging" />
 
     <TextView
@@ -42,7 +51,7 @@
         android:layout_marginBottom="40dip"
         android:gravity="center"
         android:text="@string/register"
-        android:textColor="#0b84aa"
+        android:textColor="@color/third"
         android:textSize="20sp" />
 
     <TextView
@@ -52,7 +61,7 @@
         android:layout_marginTop="40dip"
         android:layout_marginBottom="40dip"
         android:gravity="center"
-        android:textColor="#0b84aa"
+        android:textColor="@color/third"
         android:textSize="20sp" />
 
     <TextView
@@ -63,6 +72,6 @@
         android:layout_marginBottom="40dip"
         android:gravity="center"
         android:text="@string/olvide_password"
-        android:textColor="#0b84aa"
+        android:textColor="@color/third"
         android:textSize="20sp" />
 </LinearLayout>

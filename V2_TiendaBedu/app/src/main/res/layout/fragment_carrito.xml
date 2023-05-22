@@ -34,7 +34,7 @@
                     android:gravity="center|center_vertical"
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp"
-                    android:text="Total de la orden de compra:"
+                    android:text="@string/total_compra"
                     android:textStyle="bold|italic" />
                 <TextView
                     android:id="@+id/textTotalOrden"
@@ -46,11 +46,23 @@
 
 
         </LinearLayout>
-        <Button
-            android:id="@+id/button_pagar"
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/button_pagar"/>
+            android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/button_cancelar"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="@string/button_cancelar"/>
+            <Button
+                android:id="@+id/button_pagar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/button_pagar"/>
+        </LinearLayout>
+
         <ScrollView
             android:id="@+id/scrollvertical"
             android:layout_width="wrap_content"

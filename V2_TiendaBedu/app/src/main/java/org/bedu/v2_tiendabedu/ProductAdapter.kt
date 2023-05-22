@@ -12,11 +12,11 @@ import com.bumptech.glide.Glide
 import org.bedu.v2_tiendabedu.models.orden.Orden
 import org.bedu.v2_tiendabedu.models.orden.arregloOrden
 import org.bedu.v2_tiendabedu.models.producto.Producto
+import kotlin.properties.Delegates
 import kotlin.reflect.typeOf
 
 
-val orden = Orden()
-//arregloOrden.addLast(orden)
+var orden = Orden()
 
 class ProductAdapter(val productList: List<org.bedu.v2_tiendabedu.models.producto.Producto>): RecyclerView.Adapter<ProductAdapter.ProductHolder>(){
 
@@ -38,10 +38,9 @@ class ProductAdapter(val productList: List<org.bedu.v2_tiendabedu.models.product
     }
 
     class ProductHolder(val view: View): RecyclerView.ViewHolder(view){
-        //val orden = Orden()
-        //arregloOrden.addLast(orden)
+        private var quantityNumber by Delegates.notNull<Int>()
 
-       private val photo: ImageView = view.findViewById<ImageView>(R.id.productImageV)
+        private val photo: ImageView = view.findViewById<ImageView>(R.id.productImageV)
         fun render(productList: Producto){
             view.findViewById<TextView>(R.id.productNameTv).text = productList.nombre
             view.findViewById<TextView>(R.id.productDescriptionTv).text = productList.descripcion
@@ -53,9 +52,17 @@ class ProductAdapter(val productList: List<org.bedu.v2_tiendabedu.models.product
             val increaseButton = view.findViewById<Button>(R.id.increase)
             val decreaseButton = view.findViewById<Button>(R.id.decrease)
 
-            //var quantityNumber = 0
-            var quantityNumber = orden.getObjetoProducto()["Cantidad"].toString().toIntOrNull() ?: 0
-
+            //var quantityNumber = orden.getObjetoProducto()["Cantidad"].toString().toIntOrNull() ?: 0
+            if (orden.listaProducto.isEmpty()){
+                quantityNumber = 0
+                Log.d("Test", "ListaV-> $orden.printListaProductos()" )
+            }else{
+                Log.d("Test", "ListaLL-> $orden.printListaProductos()" )
+                val objetoLista = orden.listaProducto.
+                filter { objetoProducto -> objetoProducto["_id"] == productList.id }
+                quantityNumber =objetoLista[0]["Cantidad"].toString().toInt()
+                updateData(quantityNumber)
+            }
 
             increaseButton.setOnClickListener {
                 quantityNumber += 1
@@ -64,9 +71,6 @@ class ProductAdapter(val productList: List<org.bedu.v2_tiendabedu.models.product
                 }else if(quantityNumber > 1){
                     orden.actualizarNumCantidadProducto(productList.id,quantityNumber)
                 }
-               // Log.i("tag ->","${orden.printListaProductos()}")
-               // Log.i("otrotag ->","${orden.getObjetoProducto()["Cantidad"]}")
-
                 updateData(quantityNumber)
             }
 
@@ -74,6 +78,7 @@ class ProductAdapter(val productList: List<org.bedu.v2_tiendabedu.models.product
                 if (quantityNumber > 0){
                     quantityNumber -= 1
                     updateData(quantityNumber)
+
                 }
             }
 

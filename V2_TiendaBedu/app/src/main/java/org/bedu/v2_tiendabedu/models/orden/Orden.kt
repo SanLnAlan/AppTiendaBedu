@@ -126,7 +126,14 @@ class Orden(
         if (objetoLista.isEmpty()) {
             println("Producto no existe")
         } else {
+            val productoOrdenNew = Inventario.buscarProducto(id)
+            val subtotalNew = cantidad * productoOrdenNew[0].precio
+            val ivaNew: Float = calcularImpuestos(subtotalNew)
+
             objetoLista[0]["Cantidad"] = cantidad
+            objetoLista[0]["subtotal"] = subtotalNew
+            objetoLista[0]["iva"] = ivaNew
+            objetoLista[0]["total"] = subtotalNew + ivaNew
         }
     }
 

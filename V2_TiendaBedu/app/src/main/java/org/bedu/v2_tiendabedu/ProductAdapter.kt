@@ -60,7 +60,10 @@ class ProductAdapter(val productList: List<org.bedu.v2_tiendabedu.models.product
                 Log.d("Test", "ListaLL-> $orden.printListaProductos()" )
                 val objetoLista = orden.listaProducto.
                 filter { objetoProducto -> objetoProducto["_id"] == productList.id }
-                quantityNumber =objetoLista[0]["Cantidad"].toString().toInt()
+                if (objetoLista.isEmpty()){
+                    quantityNumber=0
+                }else{quantityNumber =objetoLista[0]["Cantidad"].toString().toInt()}
+
                 updateData(quantityNumber)
             }
 
@@ -77,8 +80,12 @@ class ProductAdapter(val productList: List<org.bedu.v2_tiendabedu.models.product
             decreaseButton.setOnClickListener {
                 if (quantityNumber > 0){
                     quantityNumber -= 1
+                    if(quantityNumber==0){
+                        orden.eliminarProducto(productList.id)
+                    }else{
+                        orden.actualizarNumCantidadProducto(productList.id,quantityNumber)
+                    }
                     updateData(quantityNumber)
-
                 }
             }
 

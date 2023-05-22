@@ -2,6 +2,7 @@ package org.bedu.v2_tiendabedu.models.orden
 
 import impuesto.Impuesto
 import org.bedu.v2_tiendabedu.models.inventario.Inventario
+import org.bedu.v2_tiendabedu.models.inventario.listaDeInventario
 import java.util.*
 
 
@@ -122,7 +123,8 @@ class Orden(
     }
 
     fun actualizarNumCantidadProducto(id: Int, cantidad: Int) {
-        val objetoLista = listaProducto.filter { objetoProducto -> objetoProducto["_id"] == id }
+        val objetoLista = listaProducto.
+        filter { objetoProducto -> objetoProducto["_id"] == id }
         if (objetoLista.isEmpty()) {
             println("Producto no existe")
         } else {
@@ -135,6 +137,13 @@ class Orden(
             objetoLista[0]["iva"] = ivaNew
             objetoLista[0]["total"] = subtotalNew + ivaNew
         }
+    }
+
+    fun eliminarProducto(id: Int) {
+        val objetoEliminar = listaProducto.
+        filter { objetoProducto -> objetoProducto["_id"] == id }
+        listaProducto.remove(element = objetoEliminar[0])
+
     }
 
     fun ticketVenta(){

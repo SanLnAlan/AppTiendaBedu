@@ -8,13 +8,16 @@ import android.widget.Toast
 import org.bedu.v2_tiendabedu.EditEmailFragment.EditEmailDialogListener
 import org.bedu.v2_tiendabedu.EditNameFragment.EditNameDialogListener
 import org.bedu.v2_tiendabedu.EditLastnameFragment.EditLastnameDialogListener
+import org.bedu.v2_tiendabedu.EditPasswordFragment.EditPasswordDialogListener
 import org.bedu.v2_tiendabedu.models.user.arregloUsuarios
 
-class AccountDetailsActivity : AppCompatActivity(), EditNameDialogListener, EditLastnameDialogListener, EditEmailDialogListener {
+class AccountDetailsActivity : AppCompatActivity(),
+    EditNameDialogListener, EditLastnameDialogListener, EditEmailDialogListener, EditPasswordDialogListener {
 
     private lateinit var buttonName: ImageButton
     private lateinit var buttonLastname: ImageButton
     private lateinit var buttonEmail: ImageButton
+    private lateinit var buttonPassword: ImageButton
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_account_details)
@@ -22,10 +25,12 @@ class AccountDetailsActivity : AppCompatActivity(), EditNameDialogListener, Edit
         buttonName = findViewById(R.id.nameButton)
         buttonLastname = findViewById(R.id.lastnameButton)
         buttonEmail = findViewById(R.id.emailButton)
+        buttonPassword = findViewById(R.id.passwordButton)
 
         buttonName.setOnClickListener {showEditName()}
-        buttonLastname.setOnClickListener{ showEditLastname()}
-        buttonEmail.setOnClickListener{ showEditEmail() }
+        buttonLastname.setOnClickListener { showEditLastname()}
+        buttonEmail.setOnClickListener { showEditEmail() }
+        buttonPassword.setOnClickListener { showEditPassword() }
     }
 
     private fun showEditName() {
@@ -44,6 +49,12 @@ class AccountDetailsActivity : AppCompatActivity(), EditNameDialogListener, Edit
         val fragmentManager = supportFragmentManager
         val editEmailFragment = EditEmailFragment.newInstance("title")
         editEmailFragment.show(fragmentManager, "fragment_edit_email")
+    }
+
+    private fun showEditPassword() {
+        val fragmentManager = supportFragmentManager
+        val editPasswordFragment = EditPasswordFragment.newInstance("title")
+        editPasswordFragment.show(fragmentManager, "fragment_edit_password")
     }
 
     // 3. This method is invoked in the activity when the listener is triggered
@@ -67,5 +78,12 @@ class AccountDetailsActivity : AppCompatActivity(), EditNameDialogListener, Edit
         textName = findViewById(R.id.email)
         textName.text = inputText
         Toast.makeText(this, "Correo cambiado exitosamente", Toast.LENGTH_SHORT).show();
+    }
+
+    override fun onFinishEditDialogP(inputText: String) {
+        val textName: TextView
+        textName = findViewById(R.id.password)
+        textName.text = inputText
+        Toast.makeText(this, "Contraseña cambiada exitosamente", Toast.LENGTH_SHORT).show();
     }
 }

@@ -23,6 +23,8 @@
     <string name="userDetails">Detalles de la cuenta</string>
     <string name="confirmar_button">Confirmar</string>
     <string name="button_pagar">Pagar</string>
+    <string name="total_compra">Total de la orden de compra:</string>
+    <string name="button_cancelar">cancelar</string>
     <string-array name="type_model">
         <item>Selecciona tipo Producto</item>
         <item>Calzado</item>

@@ -28,9 +28,9 @@ class AccountDetailsActivity : AppCompatActivity(),
         buttonPassword = findViewById(R.id.passwordButton)
 
         buttonName.setOnClickListener {showEditName()}
-        buttonLastname.setOnClickListener { showEditLastname()}
-        buttonEmail.setOnClickListener { showEditEmail() }
-        buttonPassword.setOnClickListener { showEditPassword() }
+        buttonLastname.setOnClickListener {showEditLastname()}
+        buttonEmail.setOnClickListener {showEditEmail()}
+        buttonPassword.setOnClickListener {showEditPassword()}
     }
 
     private fun showEditName() {
@@ -81,9 +81,6 @@ class AccountDetailsActivity : AppCompatActivity(),
     }
 
     override fun onFinishEditDialogP(inputText: String) {
-        val textName: TextView
-        textName = findViewById(R.id.password)
-        textName.text = inputText
         Toast.makeText(this, "Contraseña cambiada exitosamente", Toast.LENGTH_SHORT).show();
     }
 }

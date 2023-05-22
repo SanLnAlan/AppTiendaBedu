@@ -1,8 +1,5 @@
 package org.bedu.v2_tiendabedu;
 
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -17,6 +14,7 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * A simple {@link DialogFragment} subclass.
@@ -25,8 +23,6 @@ import android.widget.TextView;
  */
 public class EditEmailFragment extends DialogFragment implements TextView.OnEditorActionListener {
     private EditText editText;
-    private Button cancelButton;
-    private Button acceptButton;
 
     // 1. Defines the listener interface with a method passing back data result.
     public interface EditEmailDialogListener {
@@ -51,21 +47,25 @@ public class EditEmailFragment extends DialogFragment implements TextView.OnEdit
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         // Get field and buttons from view
-        editText = (EditText) view.findViewById(R.id.editEmailField);
-        cancelButton = (Button) view.findViewById(R.id.cancelButtonE);
-        acceptButton = (Button) view.findViewById(R.id.acceptButtonE);
+        editText = view.findViewById(R.id.editEmailField);
+        Button cancelButton = view.findViewById(R.id.cancelButtonE);
+        Button acceptButton = view.findViewById(R.id.acceptButtonE);
         // Fetch arguments from bundle and set title
         String title = getArguments().getString("title", "Ingrese su nombre");
         // Show soft keyboard automatically and request focus to field
         editText.requestFocus();
         getDialog().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
         // 2. Setup a callback when the "Done" button is pressed on keyboard
-        editText.setOnEditorActionListener(this);
+        //editText.setOnEditorActionListener(this);
         cancelButton.setOnClickListener(v -> dismiss());
         acceptButton.setOnClickListener(v -> {
-            EditEmailFragment.EditEmailDialogListener listener = (EditEmailFragment.EditEmailDialogListener) getActivity();
-            listener.onFinishEditDialogE(editText.getText().toString());
-            dismiss();
+            if(editText.getText().toString().equals("")) {
+                Toast.makeText(getContext(), "El campo no puede estar vacio", Toast.LENGTH_SHORT).show();
+            } else {
+                EditEmailFragment.EditEmailDialogListener listener = (EditEmailFragment.EditEmailDialogListener) getActivity();
+                listener.onFinishEditDialogE(editText.getText().toString());
+                dismiss();
+            }
         });
     }
 

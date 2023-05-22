@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import org.bedu.v2_tiendabedu.utilitis.Tabla
@@ -48,13 +49,18 @@ class CarritoFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         buttonPagar = view.findViewById(R.id.button_pagar)
+        var txtTotalPagar = view.findViewById<TextView>(R.id.textTotalOrden)
         buttonPagar.setOnClickListener {
-            Toast.makeText(context, "${orden.printListaProductos()}", Toast.LENGTH_SHORT)
+
         }
 
         val tabla = Tabla(context as Activity?, view.findViewById(R.id.tabla) )
         tabla.agregarCabecera(R.array.cabecera_tabla)
         if( orden.listaProducto.isNotEmpty()){
+            var totalP = orden.calcularTotal().toString()
+            totalP = "$" + totalP
+            txtTotalPagar.text = totalP
+
             for (p in orden.listaProducto){
                 val elementos = ArrayList<String>()
                 elementos.add(p["_id"].toString())

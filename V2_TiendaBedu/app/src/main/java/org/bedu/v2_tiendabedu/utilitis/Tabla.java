@@ -56,8 +56,8 @@ public class Tabla {
             layoutCelda = new TableRow.LayoutParams(obtenerAnchoPixelesTexto(arraycabecera[i]), TableRow.LayoutParams.WRAP_CONTENT);
             texto.setText(arraycabecera[i]);
             texto.setGravity(Gravity.CENTER_HORIZONTAL);
-            //TextViewCompat.setTextAppearance(texto, androidx.appcompat.R.style.Base_V21_Theme_AppCompat_Light);
-            //texto.setBackgroundResource(R.drawable.backgroud_carrito);
+            TextViewCompat.setTextAppearance(texto, R.style.estilo_celda);
+            texto.setBackgroundResource(R.drawable.tabla_celda_cabecera);
             texto.setLayoutParams(layoutCelda);
 
             fila.addView(texto);
@@ -82,9 +82,9 @@ public class Tabla {
         for (int i = 0; i < elementos.size(); i++) {
             TextView texto = new TextView(actividad);
             texto.setText(String.valueOf(elementos.get(i)));
-            texto.setGravity(Gravity.CENTER_HORIZONTAL);
-            //TextViewCompat.setTextAppearance(texto, androidx.constraintlayout.widget.R.style.Base_V21_Theme_AppCompat_Light_Dialog);
-            //texto.setBackgroundResource(R.drawable.backgroud_carrito);
+            texto.setGravity(Gravity.NO_GRAVITY);
+            TextViewCompat.setTextAppearance(texto, R.style.estilo_celda);
+            texto.setBackgroundResource(R.drawable.tabla_celda);
             layoutCelda = new TableRow.LayoutParams(obtenerAnchoPixelesTexto(texto.getText().toString()), TableRow.LayoutParams.WRAP_CONTENT);
             texto.setLayoutParams(layoutCelda);
             fila.addView(texto);

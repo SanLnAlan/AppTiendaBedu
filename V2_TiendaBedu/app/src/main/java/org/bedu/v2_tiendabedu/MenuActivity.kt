@@ -45,7 +45,7 @@ class MenuActivity : AppCompatActivity() {
             urlImagen = "https://shorturl.at/bejkl"
         )
         Inventario.agregarProductoInventario(
-            "Refrigerador Mabe", "Refrigerador 10 pies cubicos",
+            "Refrigerador Mabe", "Refrigerador",
             "Hogar", "Mabe-12", 100000f, 10, numeroSerie = "MB-'1112",
             urlImagen = "https://shorturl.at/ehuU4"
         ) }

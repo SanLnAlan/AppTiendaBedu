@@ -12,9 +12,6 @@ import org.bedu.v2_tiendabedu.utilitis.HandleLogging.Companion.fieldsValidate
 import org.bedu.v2_tiendabedu.models.inventario.Inventario
 import kotlin.text.toFloatOrNull as toFloatOrNull1
 
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
 class InventarioFragment : Fragment() {
     private var valProductName = false
     private var valProductDesc = false
@@ -58,13 +55,10 @@ class InventarioFragment : Fragment() {
             spinner.adapter = adapter
         }
 
-        spinner?.onItemSelectedListener = object :AdapterView.OnItemSelectedListener{
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-
-            }
+        spinner.onItemSelectedListener = object :AdapterView.OnItemSelectedListener{
+            override fun onNothingSelected(parent: AdapterView<*>?) = Unit
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                val type = parent?.getItemAtPosition(position).toString()
-                when(type){
+                when(val type = parent?.getItemAtPosition(position).toString()){
                     "Calzado", "Ropa"-> {inputProductSize.isEnabled= true
                                          inputSerialNumer.isEnabled = false
                                          valHogar = false
@@ -194,33 +188,27 @@ class InventarioFragment : Fragment() {
         }
 
         if (valDatos()){
-            val size: Float? = sizeProduct.toFloatOrNull1() ?: 0f
-            val stock: Int?= stockProduct.toIntOrNull() ?: 0
-            val price: Float? = priceProduct.toFloatOrNull1() ?: 0f
+            val size: Float = sizeProduct.toFloatOrNull1() ?: 0f
+            val stock: Int = stockProduct.toIntOrNull() ?: 0
+            val price: Float = priceProduct.toFloatOrNull1() ?: 0f
 
             Log.d("Datos->", "$size $stock $price $typeModel")
 
-            if (size != null) {
-                if (stock != null) {
-                    if (price != null) {
-                        Inventario.agregarProductoInventario(
-                            nombre = nameProduct, descripcion = descProduct,
-                            modelo = modelProduct, tipo = typeModel,
-                            talla = size, numeroSerie = serialProduct,
-                            stock = stock, precio = price
-                        )
-                    }
-                }
-            }
+            Inventario.agregarProductoInventario(
+                nombre = nameProduct, descripcion = descProduct,
+                modelo = modelProduct, tipo = typeModel,
+                talla = size, numeroSerie = serialProduct,
+                stock = stock, precio = price
+            )
             val toast = Toast.makeText(requireContext(), "Guardando producto", Toast.LENGTH_LONG)
             toast.show()
-            inputProductName.getText().clear()
-            inputProductDesc.getText().clear()
-            inputProductModel.getText().clear()
-            inputProductPrice.getText().clear()
-            inputProductStock.getText().clear()
-            inputProductSize.getText().clear()
-            inputSerialNumer.getText().clear()
+            inputProductName.text.clear()
+            inputProductDesc.text.clear()
+            inputProductModel.text.clear()
+            inputProductPrice.text.clear()
+            inputProductStock.text.clear()
+            inputProductSize.text.clear()
+            inputSerialNumer.text.clear()
             spinner.setSelection(0)
         }
     }
@@ -233,15 +221,4 @@ class InventarioFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_inventario, container, false)
     }
 
-
-    companion object {
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            InventarioFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
 }

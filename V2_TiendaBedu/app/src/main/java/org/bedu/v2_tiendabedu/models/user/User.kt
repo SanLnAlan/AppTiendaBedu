@@ -5,6 +5,7 @@ import java.util.*
 // Variable global de usuarios
 var arregloUsuarios = LinkedList<User>()
 
+
 data class User(
     var id: Int = 0,
     var nombre: String = "Admin",
@@ -16,10 +17,12 @@ data class User(
     companion object {
         private var contadorUser: Int = 0
     }
+
     init {
         contadorUser += 1
 
     }
+
     init {
         this.id = contadorUser
         Log.d("id", "Id-> ${this.id}")
@@ -30,7 +33,10 @@ data class User(
     }
 
     fun addUsers(usuario:User){
+
         arregloUsuarios.addLast(usuario)
+
     }
+
 }
 

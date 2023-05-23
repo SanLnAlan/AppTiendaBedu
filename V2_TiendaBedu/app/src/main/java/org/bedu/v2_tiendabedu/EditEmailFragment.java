@@ -55,8 +55,6 @@ public class EditEmailFragment extends DialogFragment implements TextView.OnEdit
         // Show soft keyboard automatically and request focus to field
         editText.requestFocus();
         getDialog().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
-        // 2. Setup a callback when the "Done" button is pressed on keyboard
-        //editText.setOnEditorActionListener(this);
         cancelButton.setOnClickListener(v -> dismiss());
         acceptButton.setOnClickListener(v -> {
             if(editText.getText().toString().equals("")) {

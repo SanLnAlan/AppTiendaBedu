@@ -11,7 +11,7 @@
         android:id="@+id/editEmailText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Modificar correo"
+        android:text="@string/editar_correo"
         android:textSize="20sp"
         android:layout_margin="16dp"/>
 
@@ -20,6 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textEmailAddress"
+        android:hint="@string/ingrese_nuevo_correo"
         android:imeOptions="actionDone"
         android:layout_marginBottom="16dp"
         android:layout_marginStart="16dp"

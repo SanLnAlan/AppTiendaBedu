@@ -5,4 +5,16 @@
     <string name="userCerrar">Cerrar sesión</string>
     <string name="button_pagar">Pagar</string>
     <string name="total_compra">Total de la orden de compra:</string>
+    <string name="detalles_cuenta">Detalles de la cuenta</string>
+    <string name="textpass">*****</string>
+    <string name="cambiar_nombre">Cambiar Nombre</string>
+    <string name="button_aceptar">Aceptar</string>
+    <string name="ingrese_nuevo_nombre">Ingrese su nuevo nombre</string>
+    <string name="cambiar_apellido">Cambiar apellido</string>
+    <string name="ingrese_nuevo_apellido">Ingrese su nuevo apellido</string>
+    <string name="editar_correo">Editar correo</string>
+    <string name="ingrese_nuevo_correo">Ingrese su nuevo correo</string>
+    <string name="cambiar_contrasena">Cambiar contraseña</string>
+    <string name="nueva_contrasena">Nueva contraseña</string>
+    <string name="repita_contrasena">Repita su contraseña</string>
 </resources>

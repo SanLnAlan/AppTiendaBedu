@@ -1,6 +1,7 @@
 package org.bedu.v2_tiendabedu.models.user
 
 import android.util.Log
+import org.bedu.v2_tiendabedu.models.inventario.listaDeInventario
 import java.util.*
 // Variable global de usuarios
 var arregloUsuarios = LinkedList<User>()
@@ -37,6 +38,7 @@ data class User(
         arregloUsuarios.addLast(usuario)
 
     }
+
 
 }
 

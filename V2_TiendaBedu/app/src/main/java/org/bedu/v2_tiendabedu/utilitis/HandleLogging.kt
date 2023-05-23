@@ -1,5 +1,6 @@
 package org.bedu.v2_tiendabedu.utilitis
 
+import android.util.Log
 import org.bedu.v2_tiendabedu.models.user.User
 import org.bedu.v2_tiendabedu.models.user.arregloUsuarios
 import java.util.regex.Pattern
@@ -18,6 +19,7 @@ class HandleLogging {
                 if (loginUser[0].password == passwordUser) {
                     valLog = true
                     msg = "Logging exitoso"
+                    USERLOGGING = userEmail
                 } else {
                     valLog = false
                     msg = "Error de contraseña"
@@ -44,7 +46,7 @@ class HandleLogging {
             return Pattern.compile(patterVal).matcher(text).matches()
         }
 
-        private fun findUser(userEmail: String): List<User> {
+        fun findUser(userEmail: String): List<User> {
 
             return arregloUsuarios.filter { User -> User.email == userEmail }
         }

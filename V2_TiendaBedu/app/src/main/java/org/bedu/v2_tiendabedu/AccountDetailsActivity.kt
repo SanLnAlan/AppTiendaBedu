@@ -9,7 +9,11 @@ import org.bedu.v2_tiendabedu.EditEmailFragment.EditEmailDialogListener
 import org.bedu.v2_tiendabedu.EditNameFragment.EditNameDialogListener
 import org.bedu.v2_tiendabedu.EditLastnameFragment.EditLastnameDialogListener
 import org.bedu.v2_tiendabedu.EditPasswordFragment.EditPasswordDialogListener
+import org.bedu.v2_tiendabedu.models.user.User
 import org.bedu.v2_tiendabedu.models.user.arregloUsuarios
+import org.bedu.v2_tiendabedu.utilitis.HandleLogging
+import org.bedu.v2_tiendabedu.utilitis.USERLOGGING
+
 
 class AccountDetailsActivity : AppCompatActivity(),
     EditNameDialogListener, EditLastnameDialogListener, EditEmailDialogListener, EditPasswordDialogListener {
@@ -22,6 +26,9 @@ class AccountDetailsActivity : AppCompatActivity(),
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_account_details)
 
+        val userLogging = HandleLogging.findUser(USERLOGGING )
+
+        //    userLogging[0].id
         buttonName = findViewById(R.id.nameButton)
         buttonLastname = findViewById(R.id.lastnameButton)
         buttonEmail = findViewById(R.id.emailButton)

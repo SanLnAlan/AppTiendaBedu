@@ -3,18 +3,12 @@ package org.bedu.v2_tiendabedu
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import org.bedu.v2_tiendabedu.databinding.ActivityMenuBinding
 import org.bedu.v2_tiendabedu.models.inventario.Inventario
-import org.bedu.v2_tiendabedu.models.orden.Orden
 import org.bedu.v2_tiendabedu.utilitis.ACCESCONTROL
-
-
-
 
 class MenuActivity : AppCompatActivity() {
 
@@ -105,6 +99,4 @@ class MenuActivity : AppCompatActivity() {
             commit()
         }
     }
-
-
 }

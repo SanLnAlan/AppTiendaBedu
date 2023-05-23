@@ -6,6 +6,7 @@
     android:orientation="horizontal">
     
     <ImageView
+        android:contentDescription="Imagen de producto"
         android:id="@+id/productImageV"
         android:layout_width="150dp"
         android:layout_height="150dp"/>
@@ -48,8 +49,6 @@
             android:gravity="end"
             android:layout_marginEnd="10dp"
             >
-
-
 
             <Button
                 android:id="@+id/decrease"

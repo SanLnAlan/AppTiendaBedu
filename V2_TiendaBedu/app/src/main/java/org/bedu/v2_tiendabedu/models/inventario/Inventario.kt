@@ -9,12 +9,9 @@ var listaDeInventario = LinkedList<Producto>()
 
 class Inventario {
     companion object {
-
-
         fun agregarInventario(producto: Producto) {
             listaDeInventario.addLast(producto)
         }
-
         fun agregarProductoInventario(
             nombre: String,
             descripcion: String,
@@ -90,26 +87,7 @@ class Inventario {
                 )
 
             }
-
         }
-
     }
-
 }
-/*
-fun main(args: Array<String>) {
 
-    Inventario.agregarProductoInventario(
-        "Zapato Blanco", "Zapato casual",
-        "calzado", "B-22", 350f, 20, 22.5f
-    )
-    Inventario.agregarProductoInventario(
-        "Tenis Blanco", "Zapato casual",
-        "calzado", "B-23", 550f, 10, 23f
-    )
-    Inventario.agregarProductoInventario(
-        "Refrigerador Mabe", "Refrigerador 10 pies cubicos",
-        "Hogar", "Mabe-12", 100000f, 10, numeroSerie = "MB-'1112"
-    )
-
-}*/

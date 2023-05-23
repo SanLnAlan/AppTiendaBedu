@@ -50,13 +50,9 @@ public class EditLastnameFragment extends DialogFragment implements TextView.OnE
         editText = view.findViewById(R.id.editLastnameField);
         Button cancelButton = view.findViewById(R.id.cancelButtonLn);
         Button acceptButton = view.findViewById(R.id.acceptButtonLn);
-        // Fetch arguments from bundle and set title
-        String title = getArguments().getString("title", "Ingrese su nombre");
         // Show soft keyboard automatically and request focus to field
         editText.requestFocus();
         getDialog().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
-        // 2. Setup a callback when the "Done" button is pressed on keyboard
-        //editText.setOnEditorActionListener(this);
         cancelButton.setOnClickListener(v -> dismiss());
         acceptButton.setOnClickListener(v -> {
             if(editText.getText().toString().equals("")){
@@ -68,7 +64,6 @@ public class EditLastnameFragment extends DialogFragment implements TextView.OnE
             }
         });
     }
-
     @Override
     public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
         if(EditorInfo.IME_ACTION_DONE == actionId) {

@@ -1,17 +1,14 @@
 package org.bedu.v2_tiendabedu.models.producto;
 
 public class CalzadoRopa extends Producto {
-
     private static final int id = 0;
     protected float talla;
-
 
     public CalzadoRopa(String nombre, String descripcion, float precio,
                        String modelo, float talla, String tipo, int stock, String imgUrl) {
         super(id, nombre, descripcion, tipo, modelo, precio, stock,imgUrl);
         this.talla = talla;
     }
-
 
     public float getTalla(float talla) {
         return this.talla = talla;

@@ -36,11 +36,9 @@ abstract class Producto(
         val difSctok: Int = this.stock - stock
         if (difSctok >= 0) {
             return stock.let { this@Producto.stock -= it; stock }
-
         } else {
             throw Error("Existencia insuficiente en inventario de: ${this.nombre}")
         }
-
     }
 
     override fun toString(): String {
@@ -55,5 +53,4 @@ abstract class Producto(
            Url del producto: ${this.imgUrl}
         """.trimIndent()
     }
-
 }

@@ -16,11 +16,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-/**
- * A simple {@link DialogFragment} subclass.
- * Use the {@link EditEmailFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class EditEmailFragment extends DialogFragment implements TextView.OnEditorActionListener {
     private EditText editText;
 
@@ -50,13 +45,9 @@ public class EditEmailFragment extends DialogFragment implements TextView.OnEdit
         editText = view.findViewById(R.id.editEmailField);
         Button cancelButton = view.findViewById(R.id.cancelButtonE);
         Button acceptButton = view.findViewById(R.id.acceptButtonE);
-        // Fetch arguments from bundle and set title
-        String title = getArguments().getString("title", "Ingrese su nombre");
         // Show soft keyboard automatically and request focus to field
         editText.requestFocus();
         getDialog().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
-        // 2. Setup a callback when the "Done" button is pressed on keyboard
-        //editText.setOnEditorActionListener(this);
         cancelButton.setOnClickListener(v -> dismiss());
         acceptButton.setOnClickListener(v -> {
             if(editText.getText().toString().equals("")) {

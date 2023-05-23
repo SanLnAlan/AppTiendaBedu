@@ -10,15 +10,12 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import org.bedu.v2_tiendabedu.models.orden.Orden
-import org.bedu.v2_tiendabedu.models.orden.arregloOrden
 import org.bedu.v2_tiendabedu.models.producto.Producto
 import kotlin.properties.Delegates
-import kotlin.reflect.typeOf
-
 
 var orden = Orden()
 
-class ProductAdapter(val productList: List<org.bedu.v2_tiendabedu.models.producto.Producto>): RecyclerView.Adapter<ProductAdapter.ProductHolder>(){
+class ProductAdapter(val productList: List<Producto>): RecyclerView.Adapter<ProductAdapter.ProductHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -31,10 +28,7 @@ class ProductAdapter(val productList: List<org.bedu.v2_tiendabedu.models.product
 
     //private lateinit var increase_button : Button
     override fun onBindViewHolder(holder: ProductHolder, position: Int) {
-
         holder.render(productList[position])
-
-
     }
 
     class ProductHolder(val view: View): RecyclerView.ViewHolder(view){
@@ -48,11 +42,9 @@ class ProductAdapter(val productList: List<org.bedu.v2_tiendabedu.models.product
             Glide.with(photo.context).load(productList.imgUrl).
             override(100, 100).into(photo)
 
-
             val increaseButton = view.findViewById<Button>(R.id.increase)
             val decreaseButton = view.findViewById<Button>(R.id.decrease)
 
-            //var quantityNumber = orden.getObjetoProducto()["Cantidad"].toString().toIntOrNull() ?: 0
             if (orden.listaProducto.isEmpty()){
                 quantityNumber = 0
                 Log.d("Test", "ListaV-> $orden.printListaProductos()" )
@@ -88,19 +80,10 @@ class ProductAdapter(val productList: List<org.bedu.v2_tiendabedu.models.product
                     updateData(quantityNumber)
                 }
             }
-
-
         }
-
-
-
-
         private fun updateData(quantityNumber: Int) {
             val quantityView = view.findViewById<TextView>(R.id.integer_number)
             quantityView.text = "" + quantityNumber.toString()
-
         }
-
-
     }
 }

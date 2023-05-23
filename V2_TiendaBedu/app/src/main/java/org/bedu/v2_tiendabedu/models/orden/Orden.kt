@@ -2,10 +2,7 @@ package org.bedu.v2_tiendabedu.models.orden
 
 import impuesto.Impuesto
 import org.bedu.v2_tiendabedu.models.inventario.Inventario
-import org.bedu.v2_tiendabedu.models.inventario.listaDeInventario
 import java.util.*
-
-
 
 var arregloOrden = LinkedList<Orden>()
 
@@ -102,9 +99,7 @@ class Orden(
                         println("${e.message} en id:$idProducto ")
                         statusOrden = Estados.PENDIENTE
                     }
-
                 }
-
             }
         }
     }
@@ -207,15 +202,7 @@ fun main(args: Array<String>) {
     orden1.agregarProductoOrden(3, 100)
 
      orden1.printListaProductos()
-//   println( orden1.listaProducto )
-    //orden1.procesarOrden()
-   // orden1.actualizarNumCantidadProducto(3, 2)
-    //orden1.procesarOrden()
-   // orden1.printListaProductos()
-
-    //Inventario.visualizarInventario()
-//    orden1.visualizarListaProductos()
-      orden1.ticketVenta()
+     orden1.ticketVenta()
 }
 
 

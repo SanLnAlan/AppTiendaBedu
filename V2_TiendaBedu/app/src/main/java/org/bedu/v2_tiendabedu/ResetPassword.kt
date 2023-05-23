@@ -5,14 +5,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import org.bedu.v2_tiendabedu.utilitis.ERRORPASSWORD
 import org.bedu.v2_tiendabedu.utilitis.HandleLogging
 import org.bedu.v2_tiendabedu.utilitis.MESSGPASSWORD
-
 class ResetPassword : AppCompatActivity() {
     var valEmail = false
     var valPassword = false

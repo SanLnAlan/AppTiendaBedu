@@ -16,7 +16,6 @@ import org.bedu.v2_tiendabedu.utilitis.LOGGINGCONT
 
 class LoginActivity : AppCompatActivity() {
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -46,8 +45,7 @@ class LoginActivity : AppCompatActivity() {
                 val intent = Intent(this, MenuActivity::class.java)
                 // start your next activity
                 startActivity(intent)
-
-            }else loginErrorMsg.text = msg
+            } else loginErrorMsg.text = msg
 
         }
         val lblGotoRegister: TextView = findViewById(R.id.link_to_register)
@@ -55,9 +53,7 @@ class LoginActivity : AppCompatActivity() {
         lblGotoRegister.setOnClickListener{
 
             val intent = Intent(this, RegisterUserActivity::class.java)
-            // start your next activity
             startActivity(intent)
-
         }
 
         lblResetPassword.setOnClickListener{
@@ -67,9 +63,6 @@ class LoginActivity : AppCompatActivity() {
             startActivity(intent)
 
         }
-
-
-
 
     }
 

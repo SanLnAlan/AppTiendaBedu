@@ -62,6 +62,7 @@ class MenuActivity : AppCompatActivity() {
         return when(item.itemId){
             R.id.userClose -> {
                 finish()
+                System.exit(0)
                 true
             }
             R.id.userDetails -> {

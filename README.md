@@ -29,7 +29,7 @@ Al compilar el el MainActivity.kt se observará la siguiente pantalla:
 
 Para poder ingresar a la aplicación usa el user de pruebas del demo:
 
-User: Admin
+Email: admin@bedu.com
 
 Cotraseña: password
 
@@ -52,3 +52,6 @@ Cualquier aclaración dirigirse con:
 * Luis Fernando Pedraza Estañol (luisfedranol@gmail.com)
 * Marco Antonio Mojica Martinez (mojicamarc@gmail.com)
 * Carlos Armando Morales Bautista (carloamoraleb@gmail.com)
+
+
+[Video](https://drive.google.com/file/d/1SFgEwrkA0YMekmG8rYv0nF1wP5dVsUny/view?usp=share_link) detalle de la aplicación.

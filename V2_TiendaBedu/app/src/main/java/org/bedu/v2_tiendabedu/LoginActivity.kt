@@ -38,8 +38,12 @@ class LoginActivity : AppCompatActivity() {
         val lblResetPassword:TextView = findViewById(R.id.reset_password)
 
         btnLogin.setOnClickListener{
-            val (valLog, msg) = HandleLogging.logging(inputEmail.text.toString(),
-                inputPassword.text.toString())
+            /*val (valLog, msg) = HandleLogging.logging(inputEmail.text.toString(),
+                inputPassword.text.toString())*/
+
+            //delete this
+            val valLog = true
+            val msg = "true"
 
             if (valLog){
                 val intent = Intent(this, MenuActivity::class.java)

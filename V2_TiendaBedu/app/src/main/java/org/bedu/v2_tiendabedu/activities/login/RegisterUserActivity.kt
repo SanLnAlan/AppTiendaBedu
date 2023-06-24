@@ -1,4 +1,4 @@
-package org.bedu.v2_tiendabedu
+package org.bedu.v2_tiendabedu.activities.login
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -8,10 +8,15 @@ import android.text.TextWatcher
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
-import org.bedu.v2_tiendabedu.models.user.User
+import org.bedu.v2_tiendabedu.R
+import org.bedu.v2_tiendabedu.models.user.RegisterUser
+import org.bedu.v2_tiendabedu.models.user.ResponseUser
 import org.bedu.v2_tiendabedu.utilitis.*
 import org.bedu.v2_tiendabedu.utilitis.HandleLogging.Companion.fieldsValidate
 import org.bedu.v2_tiendabedu.utilitis.HandleLogging.Companion.findUserVal
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 
 class RegisterUserActivity : AppCompatActivity() {
@@ -20,6 +25,9 @@ class RegisterUserActivity : AppCompatActivity() {
     var valEmail = false
     var valPassword = false
     var valPasswordConf = false
+    var status: Boolean= false
+    var msg: Any= ""
+    var code: Int =0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -177,13 +185,43 @@ class RegisterUserActivity : AppCompatActivity() {
 
         }
         btnRegister.setOnClickListener{
+
+
+
             if(inputPassword.text.toString() == inputPasswordConf.text.toString()){
                 val (valUser, msgUser)= findUserVal(inputEmail.text.toString())
                 if (valUser){
-                    val user = User(nombre = inputName.text.toString(),
+                    val user = RegisterUser(
+                        username=inputEmail.text.toString(),
+                        nombres = inputName.text.toString(),
                         apellidos = inputSurname.text.toString(),
                         email = inputEmail.text.toString(),
-                        password = inputPassword.text.toString())
+                        password = inputPassword.text.toString(),
+                        password2 = inputPasswordConf.text.toString())
+                    val callRegister = TiendaService()
+                    callRegister.apiService.postRegisterUser(user).enqueue(object :
+                        Callback<ResponseUser>{
+                        override fun onResponse(
+                            call: Call<ResponseUser>,
+                            response: Response<ResponseUser>
+                        ) {
+                            code = response.code()
+                            status = response.isSuccessful
+                            msg = if (!response.isSuccessful) {
+                                ErrorMessage.messege_error(response)
+
+                            }else{
+                                response.message()!!
+                            }
+                            registerErrorMsg.text = msg.toString()
+
+                        }
+
+                        override fun onFailure(call: Call<ResponseUser>, t: Throwable) {
+                            TODO("Not yet implemented")
+                        }
+
+                    })
                     btnRegister.isEnabled = false
                     inputName.setText("")
                     inputSurname.setText("")
@@ -191,7 +229,8 @@ class RegisterUserActivity : AppCompatActivity() {
                     inputPassword.setText("")
                     inputPasswordConf.setText("")
 
-                    user.addUsers(usuario = user)
+
+                    //user.addUsers(usuario = user)
                     registerErrorMsg.text = msgUser
                 }else{
                     registerErrorMsg.text = msgUser

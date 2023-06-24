@@ -14,21 +14,24 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.V2_TiendaBedu"
+        android:hardwareAccelerated="true"
+        android:largeHeap="true"
+        tools:ignore="GoogleAppIndexingWarning"
         tools:targetApi="31">
         <activity
             android:name=".AccountDetailsActivity"
             android:exported="false" />
         <activity
-            android:name=".ResetPassword"
+            android:name=".activities.login.ResetPassword"
             android:exported="false" />
         <activity
-            android:name=".RegisterUserActivity"
+            android:name=".activities.login.RegisterUserActivity"
             android:exported="false" />
         <activity
             android:name=".MenuActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".activities.login.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

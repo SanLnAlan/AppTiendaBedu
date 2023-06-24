@@ -1,4 +1,4 @@
-package org.bedu.v2_tiendabedu
+package org.bedu.v2_tiendabedu.activities.login
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -8,6 +8,7 @@ import android.text.TextWatcher
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import org.bedu.v2_tiendabedu.R
 import org.bedu.v2_tiendabedu.utilitis.ERRORPASSWORD
 import org.bedu.v2_tiendabedu.utilitis.HandleLogging
 import org.bedu.v2_tiendabedu.utilitis.MESSGPASSWORD

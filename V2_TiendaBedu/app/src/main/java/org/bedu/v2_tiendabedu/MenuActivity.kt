@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import org.bedu.v2_tiendabedu.databinding.ActivityMenuBinding
 import org.bedu.v2_tiendabedu.models.inventario.Inventario
 import org.bedu.v2_tiendabedu.utilitis.ACCESCONTROL
+import org.bedu.v2_tiendabedu.utilitis.SharedPrfs.Companion.cleanUserPreferences
 
 class MenuActivity : AppCompatActivity() {
 
@@ -55,8 +56,11 @@ class MenuActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when(item.itemId){
             R.id.userClose -> {
+                cleanUserPreferences(this)
                 finish()
-                System.exit(0)
+                val intent = Intent(this, LoginActivity::class.java)
+                startActivity(intent)
+                //System.exit(0)
                 true
             }
             R.id.userDetails -> {

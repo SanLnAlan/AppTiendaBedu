@@ -7,8 +7,8 @@ import java.util.regex.Pattern
 
 class HandleLogging {
     companion object {
-        fun logging(userEmail: String, passwordUser: String): Pair<Boolean, String> {
-
+        fun logging(userEmail: String, passwordUser: String): List<Any> {
+        //fun logging(userEmail: String, passwordUser: String): Boolean, String, User {
             val loginUser = findUser(userEmail)
             var valLog = false
             var msg = "Error logging"
@@ -26,7 +26,7 @@ class HandleLogging {
                 }
             }
 
-            return  valLog to msg
+            return  listOf(valLog, msg, loginUser[0])
         }
 
         fun fieldsValidate(text: CharSequence, tipo: String): Boolean {

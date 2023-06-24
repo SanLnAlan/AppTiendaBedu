@@ -44,35 +44,22 @@ class AccountDetailsActivity : AppCompatActivity(),
         nameText.text = userLogged[0].nombre
         lastnameText.text = userLogged[0].apellidos
         emailText.text = userLogged[0].email
-        buttonName.setOnClickListener {showEditName()}
-        buttonLastname.setOnClickListener {showEditLastname()}
-        buttonEmail.setOnClickListener {showEditEmail()}
-        buttonPassword.setOnClickListener {showEditPassword()}
+        buttonName.setOnClickListener {showEdit("fragment_edit_name")}
+        buttonLastname.setOnClickListener {showEdit("fragment_edit_lastname")}
+        buttonEmail.setOnClickListener {showEdit("fragment_edit_email")}
+        buttonPassword.setOnClickListener {showEdit("fragment_edit_password")}
     }
 
-    private fun showEditName() {
+    private fun showEdit(fragment_tag: String){
         val fragmentManager = supportFragmentManager
-        val editNameFragment = EditNameFragment.newInstance("title")
-        editNameFragment.show(fragmentManager, "fragment_edit_name")
+        when(fragment_tag){
+            "fragment_edit_name"-> EditNameFragment.newInstance("title").show(fragmentManager, fragment_tag)
+            "fragment_edit_lastname"-> EditLastnameFragment.newInstance("title").show(fragmentManager, fragment_tag)
+            "fragment_edit_email"-> EditEmailFragment.newInstance("title").show(fragmentManager, fragment_tag)
+            "fragment_edit_password"-> EditPasswordFragment.newInstance("title").show(fragmentManager, fragment_tag)
+        }
     }
 
-    private fun showEditLastname() {
-        val fragmentManager = supportFragmentManager
-        val editLastnameFragment = EditLastnameFragment.newInstance("title")
-        editLastnameFragment.show(fragmentManager, "fragment_edit_lastname")
-    }
-
-    private fun showEditEmail() {
-        val fragmentManager = supportFragmentManager
-        val editEmailFragment = EditEmailFragment.newInstance("title")
-        editEmailFragment.show(fragmentManager, "fragment_edit_email")
-    }
-
-    private fun showEditPassword() {
-        val fragmentManager = supportFragmentManager
-        val editPasswordFragment = EditPasswordFragment.newInstance("title")
-        editPasswordFragment.show(fragmentManager, "fragment_edit_password")
-    }
 
     // 3. This method is invoked in the activity when the listener is triggered
     // Access the data result passed to the activity here
@@ -81,7 +68,7 @@ class AccountDetailsActivity : AppCompatActivity(),
         textName = findViewById(R.id.name)
         textName.text = inputText
         userLogged[0].nombre = inputText
-        Toast.makeText(this, "Nombre cambiado exitosamente", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Nombre cambiado exitosamente", Toast.LENGTH_SHORT).show()
     }
 
     override fun onFinishEditDialogLn(inputText: String) {
@@ -89,7 +76,7 @@ class AccountDetailsActivity : AppCompatActivity(),
         textName = findViewById(R.id.lastname)
         textName.text = inputText
         userLogged[0].apellidos = inputText
-        Toast.makeText(this, "Apellido cambiado exitosamente", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Apellido cambiado exitosamente", Toast.LENGTH_SHORT).show()
     }
 
     override fun onFinishEditDialogE(inputText: String) {
@@ -97,11 +84,11 @@ class AccountDetailsActivity : AppCompatActivity(),
         textName = findViewById(R.id.email)
         textName.text = inputText
         userLogged[0].email = inputText
-        Toast.makeText(this, "Correo cambiado exitosamente", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Correo cambiado exitosamente", Toast.LENGTH_SHORT).show()
     }
 
     override fun onFinishEditDialogP(inputText: String) {
         userLogged[0].password = inputText
-        Toast.makeText(this, "Contraseña cambiada exitosamente", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Contraseña cambiada exitosamente", Toast.LENGTH_SHORT).show()
     }
 }

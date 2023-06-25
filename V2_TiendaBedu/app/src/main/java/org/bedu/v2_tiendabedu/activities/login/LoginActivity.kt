@@ -12,6 +12,8 @@ import org.bedu.v2_tiendabedu.R
 import org.bedu.v2_tiendabedu.models.user.ResponseLogin
 import org.bedu.v2_tiendabedu.models.user.UserLogin
 import org.bedu.v2_tiendabedu.utilitis.ErrorMessage
+import org.bedu.v2_tiendabedu.utilitis.SharedPrfs.Companion.getUserPreferences
+import org.bedu.v2_tiendabedu.utilitis.SharedPrfs.Companion.saveUserPreferences
 import org.bedu.v2_tiendabedu.utilitis.TiendaService
 import retrofit2.Call
 import retrofit2.Callback
@@ -25,43 +27,34 @@ class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
-       /*
-        if (LOGGINGCONT == 0){
-            val admin = User(
-                nombre = "Admin",
-                apellidos = "Usuario Adminstrado",
-                email = "admin@bedu.com",
-                password = "password"
-            )
-            admin.nombre
-        }
 
-        LOGGINGCONT++ */
+        setContentView(R.layout.activity_login)
         val inputUserName: EditText = findViewById(R.id.txtEmail)
         val inputPassword: EditText = findViewById(R.id.txtPass)
         val btnLogin: Button = findViewById(R.id.btnLogin)
         val loginErrorMsg: TextView = findViewById(R.id.login_error)
         val lblResetPassword:TextView = findViewById(R.id.reset_password)
 
+       val lisP = getUserPreferences(this)
+       Log.i("Prefeences->",lisP.toString() )
+
+
+        fun login(status:Boolean, code:Int, msg:Any){
+            Log.d("Meeee", "$code $msg $status")
+
+            if (status || lisP.isNotEmpty()){
+                val intent = Intent(this, MenuActivity::class.java)
+                startActivity(intent)
+
+            } else loginErrorMsg.text = msg as CharSequence?
+        }
 
         btnLogin.setOnClickListener{
-            /*val (valLog, msg) = HandleLogging.logging(inputEmail.text.toString(),
-                inputPassword.text.toString())*/
-            fun login(status:Boolean, code:Int, msg:Any){
-                Log.d("Meeee", "$code $msg $status")
-                if (status){
-                    val intent = Intent(this, MenuActivity::class.java)
-                    // start your next activity
-                    startActivity(intent)
-
-                } else loginErrorMsg.text = msg as CharSequence?
-            }
 
             val userLogin = UserLogin(inputUserName.text.toString(),
                inputPassword.text.toString())
-            val call_login = TiendaService()
-            call_login.apiService.postLoginUser(userLogin).enqueue(object :
+            val callLogin = TiendaService()
+            callLogin.apiService.postLoginUser(userLogin).enqueue(object :
                 Callback<ResponseLogin> {
                 override fun onResponse(
                     call: Call<ResponseLogin>,
@@ -74,6 +67,7 @@ class LoginActivity : AppCompatActivity() {
 
                     }else{
                         response.body()!!
+                        saveUserPreferences(response.body()!!, this@LoginActivity)
                     }
 
                     login(status, code, msg)

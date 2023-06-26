@@ -48,7 +48,7 @@ class LoginActivity : AppCompatActivity() {
 
             } else loginErrorMsg.text = msg as CharSequence?
         }
-
+        login(false,0,"")
         btnLogin.setOnClickListener{
 
             val userLogin = UserLogin(inputUserName.text.toString(),
@@ -75,7 +75,6 @@ class LoginActivity : AppCompatActivity() {
                 }
 
                 override fun onFailure(call: Call<ResponseLogin>, t: Throwable) {
-                    TODO("Not yet implemented")
                 }
             })
 

@@ -25,6 +25,7 @@ class SharedPrfs {
                 .putString(USER, user.user.username)
                 .putString(TOKEN, user.token)
                 .apply()
+            Log.i("saving",user.user.username)
         }
 
         fun getUserPreferences(context: Context): List<String?> {
@@ -41,25 +42,18 @@ class SharedPrfs {
             }
 
         }
-/*
+
         fun cleanUserPreferences(context: Context){
-            preferences = context.getSharedPreferences(USUARIOS_PREFS, Context.MODE_PRIVATE)
-            /*preferences.edit()
-                .putInt(ID,0)
-                .putString(NOMBRE, "")
-                .putString(APELLIDOS, "")
-                .putString(EMAIL, "")
-                .putString(PASSWORD, "")
-                .apply()*/
-            val editor = preferences.edit()
+            //preferences = context.getSharedPreferences(USUARIOS_PREFS, Context.MODE_PRIVATE)
+            val editor = context.getSharedPreferences(USUARIOS_PREFS, Context.MODE_PRIVATE).edit()
             editor.clear()
             editor.apply()
 
-            val name = preferences.getString(NOMBRE,"")
-            val email = preferences.getString(EMAIL,"")
+            /*val name = preferences.getString(NOMBRE,"")
+            val email = preferences.getString(EMAIL,"")*/
             Log.i("aa","limpiado")
-            Log.i("aa","$name, $email")
+            //Log.i("aa","$name, $email")
 
-        }*/
+        }
     }
 }

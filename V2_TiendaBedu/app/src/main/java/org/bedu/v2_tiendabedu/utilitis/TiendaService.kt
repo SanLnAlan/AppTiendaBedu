@@ -12,7 +12,7 @@ class TiendaService {
         // Instancia de Retrofit
        private fun getRetrofit():Retrofit{
             return Retrofit.Builder()
-                .baseUrl("http://192.168.1.64:8005/")
+                .baseUrl("http://192.168.1.134:8005/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
         }

@@ -3,6 +3,7 @@ package org.bedu.v2_tiendabedu
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.fragment.app.Fragment
@@ -10,6 +11,8 @@ import org.bedu.v2_tiendabedu.activities.login.LoginActivity
 import org.bedu.v2_tiendabedu.databinding.ActivityMenuBinding
 import org.bedu.v2_tiendabedu.models.inventario.Inventario
 import org.bedu.v2_tiendabedu.utilitis.ACCESCONTROL
+import org.bedu.v2_tiendabedu.utilitis.SharedPrfs.Companion.cleanUserPreferences
+
 //import org.bedu.v2_tiendabedu.utilitis.SharedPrfs.Companion.cleanUserPreferences
 
 class MenuActivity : AppCompatActivity() {
@@ -26,8 +29,15 @@ class MenuActivity : AppCompatActivity() {
 
         binding = ActivityMenuBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        setCurrentFragment(catalogoFragment)
+        Log.i("extras","${intent.extras}")
+        if(intent.extras != null){
+            setCurrentFragment(carritoFragment)
+            val menuCarrito = binding.bottomNavigationView.menu.findItem(R.id.nav_carrito)
+            menuCarrito.isCheckable = true
+            menuCarrito.isChecked = true
+        } else {
+            setCurrentFragment(catalogoFragment)
+        }
         createFragments()
         if (ACCESCONTROL==0){
         Inventario.agregarProductoInventario(
@@ -57,7 +67,7 @@ class MenuActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when(item.itemId){
             R.id.userClose -> {
-                //cleanUserPreferences(this)
+                cleanUserPreferences(this)
                 finish()
                 val intent = Intent(this, LoginActivity::class.java)
                 startActivity(intent)

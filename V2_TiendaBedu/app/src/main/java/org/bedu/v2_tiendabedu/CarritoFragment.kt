@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.content.pm.PackageManager
-import android.location.Location
 import android.location.LocationManager
 import android.os.Bundle
 import android.util.Log
@@ -16,10 +15,12 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
-import com.google.android.gms.common.api.Api.AnyClient
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
+import org.bedu.v2_tiendabedu.utilitis.NotificationApp
 import org.bedu.v2_tiendabedu.utilitis.Tabla
+import org.bedu.v2_tiendabedu.utilitis.executeOrRequestPermission
+import org.bedu.v2_tiendabedu.utilitis.carritoPendienteNotification
 
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
@@ -48,10 +49,23 @@ class CarritoFragment : Fragment() {
     private lateinit var buttonPagar : Button
     private lateinit var fusedLocationClient: FusedLocationProviderClient
 
+    override fun onStop() {
+        super.onStop()
+        Log.i("not","on stop")
+
+        //Lanzamiento de notification
+        try {
+            runCarritoPendienteNotification()
+        } catch (exception: Exception){
+            Log.i("not","$exception")
+        }
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         buttonPagar = view.findViewById(R.id.button_pagar)
         val txtTotalPagar = view.findViewById<TextView>(R.id.textTotalOrden)
+        val notificationApp = NotificationApp()
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
         buttonPagar.setOnClickListener {
@@ -127,6 +141,13 @@ class CarritoFragment : Fragment() {
             }
         } else {
           requestPermissions()
+        }
+    }
+
+    private fun runCarritoPendienteNotification(){
+        Log.i("not",orden.listaProducto[0]["precio"].toString())
+        executeOrRequestPermission(requireActivity()){
+            carritoPendienteNotification(requireActivity(),requireContext())
         }
     }
 }

@@ -70,6 +70,7 @@ class CarritoFragment : Fragment() {
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
         buttonPagar.setOnClickListener {
             getLocation()
+            showLoadingFragment()
         }
 
         val tabla = Tabla(context as Activity?, view.findViewById(R.id.tabla) )
@@ -149,5 +150,12 @@ class CarritoFragment : Fragment() {
         executeOrRequestPermission(requireActivity()){
             carritoPendienteNotification(requireActivity(),requireContext())
         }
+    }
+
+    private fun showLoadingFragment() {
+        val fragmentManager = childFragmentManager
+        PagandoFragment.newInstance("pagando")
+            .show(fragmentManager,"fragment_pagando")
+
     }
 }

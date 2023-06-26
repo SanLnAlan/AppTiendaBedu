@@ -1,4 +1,4 @@
-package org.bedu.v2_tiendabedu;
+package org.bedu.v2_tiendabedu.activities.user;
 
 import android.os.Bundle;
 
@@ -16,18 +16,25 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class EditEmailFragment extends DialogFragment implements TextView.OnEditorActionListener {
+import org.bedu.v2_tiendabedu.R;
+
+/**
+ * A simple {@link DialogFragment} subclass.
+ * Use the {@link EditLastnameFragment#newInstance} factory method to
+ * create an instance of this fragment.
+ */
+public class EditLastnameFragment extends DialogFragment implements TextView.OnEditorActionListener {
     private EditText editText;
 
     // 1. Defines the listener interface with a method passing back data result.
-    public interface EditEmailDialogListener {
-        void onFinishEditDialogE(String inputText);
+    public interface EditLastnameDialogListener {
+        void onFinishEditDialogLn(String inputText);
     }
 
-    public EditEmailFragment(){ }
+    public EditLastnameFragment(){ }
 
-    public static EditEmailFragment newInstance(String title) {
-        EditEmailFragment frag = new EditEmailFragment();
+    public static EditLastnameFragment newInstance(String title) {
+        EditLastnameFragment frag = new EditLastnameFragment();
         Bundle args = new Bundle();
         args.putString("title", title);
         frag.setArguments(args);
@@ -36,36 +43,35 @@ public class EditEmailFragment extends DialogFragment implements TextView.OnEdit
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_edit_email, container);
+        return inflater.inflate(R.layout.fragment_edit_lastname, container);
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         // Get field and buttons from view
-        editText = view.findViewById(R.id.editEmailField);
-        Button cancelButton = view.findViewById(R.id.cancelButtonE);
-        Button acceptButton = view.findViewById(R.id.acceptButtonE);
+        editText = view.findViewById(R.id.editLastnameField);
+        Button cancelButton = view.findViewById(R.id.cancelButtonLn);
+        Button acceptButton = view.findViewById(R.id.acceptButtonLn);
         // Show soft keyboard automatically and request focus to field
         editText.requestFocus();
         getDialog().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
         cancelButton.setOnClickListener(v -> dismiss());
         acceptButton.setOnClickListener(v -> {
-            if(editText.getText().toString().equals("")) {
+            if(editText.getText().toString().equals("")){
                 Toast.makeText(getContext(), "El campo no puede estar vacio", Toast.LENGTH_SHORT).show();
             } else {
-                EditEmailFragment.EditEmailDialogListener listener = (EditEmailFragment.EditEmailDialogListener) getActivity();
-                listener.onFinishEditDialogE(editText.getText().toString());
+                EditLastnameFragment.EditLastnameDialogListener listener = (EditLastnameFragment.EditLastnameDialogListener) getActivity();
+                listener.onFinishEditDialogLn(editText.getText().toString());
                 dismiss();
             }
         });
     }
-
     @Override
     public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
         if(EditorInfo.IME_ACTION_DONE == actionId) {
             // Return input text back to activity through the implemented listener
-            EditEmailFragment.EditEmailDialogListener listener = (EditEmailFragment.EditEmailDialogListener) getActivity();
-            listener.onFinishEditDialogE(editText.getText().toString());
+            EditLastnameFragment.EditLastnameDialogListener listener = (EditLastnameFragment.EditLastnameDialogListener) getActivity();
+            listener.onFinishEditDialogLn(editText.getText().toString());
             dismiss();
             return true;
         }

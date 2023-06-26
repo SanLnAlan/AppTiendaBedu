@@ -36,3 +36,20 @@ data class ResponseUser(
     @SerializedName("last_name") var apellidos: String,
 )
 
+data class ChangeName(
+    @SerializedName("first_name") var nombres: String,)
+
+data class ChangeSurname(
+    @SerializedName("last_name") var apellidos: String,)
+
+data class ChangeEmail(
+    @SerializedName("username") var username: String,
+    @SerializedName("email") var email: String,)
+
+data class ChancePassword(
+    @SerializedName("password") var password: String,
+    @SerializedName("password2") var password2: String,
+)
+
+
+

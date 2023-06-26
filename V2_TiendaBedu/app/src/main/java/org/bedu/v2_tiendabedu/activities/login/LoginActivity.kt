@@ -34,13 +34,9 @@ class LoginActivity : AppCompatActivity() {
         val btnLogin: Button = findViewById(R.id.btnLogin)
         val loginErrorMsg: TextView = findViewById(R.id.login_error)
         val lblResetPassword:TextView = findViewById(R.id.reset_password)
-
-       val lisP = getUserPreferences(this)
-       Log.i("Prefeences->",lisP.toString() )
-
+        val lisP = getUserPreferences(this)
 
         fun login(status:Boolean, code:Int, msg:Any){
-            Log.d("Meeee", "$code $msg $status")
 
             if (status || lisP.isNotEmpty()){
                 val intent = Intent(this, MenuActivity::class.java)
@@ -48,7 +44,9 @@ class LoginActivity : AppCompatActivity() {
 
             } else loginErrorMsg.text = msg as CharSequence?
         }
-        login(false,0,"")
+
+        login(false, 0, "")
+
         btnLogin.setOnClickListener{
 
             val userLogin = UserLogin(inputUserName.text.toString(),
@@ -75,6 +73,7 @@ class LoginActivity : AppCompatActivity() {
                 }
 
                 override fun onFailure(call: Call<ResponseLogin>, t: Throwable) {
+                    TODO("Not yet implemented")
                 }
             })
 

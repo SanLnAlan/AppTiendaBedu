@@ -4,7 +4,7 @@
     <string name="inventario">Inventario</string>
     <string name="carrito">Carrito</string>
     <string name="olvide_password"><u>Olvide password!</u></string>
-    <string name="login">UserName</string>
+    <string name="login">Email</string>
     <string name="password">Password</string>
     <string name="logging">enviar</string>
     <string name="register"><u>registrate!</u></string>

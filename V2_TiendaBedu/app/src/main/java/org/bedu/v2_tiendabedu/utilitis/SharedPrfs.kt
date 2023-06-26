@@ -25,7 +25,6 @@ class SharedPrfs {
                 .putString(USER, user.user.username)
                 .putString(TOKEN, user.token)
                 .apply()
-            Log.i("saving",user.user.username)
         }
 
         fun getUserPreferences(context: Context): List<String?> {
@@ -35,7 +34,7 @@ class SharedPrfs {
             val token = preferences.getString(TOKEN,"")
             val expiry = preferences.getString(FECHA_CADUCIDAD,"")
 
-            if(user == "" && token == "" && expiry==""){
+            if(user == "" || token == "" || expiry==""){
                 return  emptyList()
             }else{
                 return listOf(user, token, expiry)
@@ -44,16 +43,19 @@ class SharedPrfs {
         }
 
         fun cleanUserPreferences(context: Context){
-            //preferences = context.getSharedPreferences(USUARIOS_PREFS, Context.MODE_PRIVATE)
-            val editor = context.getSharedPreferences(USUARIOS_PREFS, Context.MODE_PRIVATE).edit()
-            editor.clear()
-            editor.apply()
+            preferences = context.getSharedPreferences(USUARIOS_PREFS, Context.MODE_PRIVATE)
+            preferences.edit()
+               .putString(FECHA_CADUCIDAD, "")
+                .putString(USER, "")
+                .putString(TOKEN, "")
+                .apply()
+        }
 
-            /*val name = preferences.getString(NOMBRE,"")
-            val email = preferences.getString(EMAIL,"")*/
-            Log.i("aa","limpiado")
-            //Log.i("aa","$name, $email")
-
+        fun updateEmail(email: String, context: Context){
+            preferences = context.getSharedPreferences(USUARIOS_PREFS, Context.MODE_PRIVATE)
+            preferences.edit()
+                .putString(USER, email)
+                .apply()
         }
     }
 }

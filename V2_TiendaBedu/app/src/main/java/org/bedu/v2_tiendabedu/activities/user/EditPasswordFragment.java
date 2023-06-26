@@ -1,4 +1,4 @@
-package org.bedu.v2_tiendabedu;
+package org.bedu.v2_tiendabedu.activities.user;
 
 import android.os.Bundle;
 
@@ -16,6 +16,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.bedu.v2_tiendabedu.R;
+
 /**
  * A simple {@link DialogFragment} subclass.
  * Use the {@link EditPasswordFragment#newInstance} factory method to
@@ -27,7 +29,7 @@ public class EditPasswordFragment extends DialogFragment implements TextView.OnE
 
     // 1. Defines the listener interface with a method passing back data result.
     public interface EditPasswordDialogListener {
-        void onFinishEditDialogP(String inputText);
+        void onFinishEditDialogP(String inputText, String inputText2);
     }
 
     public EditPasswordFragment(){ }
@@ -63,7 +65,7 @@ public class EditPasswordFragment extends DialogFragment implements TextView.OnE
             EditPasswordFragment.EditPasswordDialogListener listener = (EditPasswordFragment.EditPasswordDialogListener) getActivity();
 
             if(confirmText.getText().toString().equals(editText.getText().toString())) {
-                listener.onFinishEditDialogP(editText.getText().toString());
+                listener.onFinishEditDialogP(editText.getText().toString(), editText.getText().toString());
                 dismiss();
             } else {
                 Toast.makeText(getActivity().getApplicationContext(), "Los datos ingresados no coinciden, inténtelo de nuevo", Toast.LENGTH_SHORT).show();
@@ -76,7 +78,7 @@ public class EditPasswordFragment extends DialogFragment implements TextView.OnE
         if(EditorInfo.IME_ACTION_DONE == actionId) {
             // Return input text back to activity through the implemented listener
             EditPasswordFragment.EditPasswordDialogListener listener = (EditPasswordFragment.EditPasswordDialogListener) getActivity();
-            listener.onFinishEditDialogP(editText.getText().toString());
+            listener.onFinishEditDialogP(editText.getText().toString(), confirmText.getText().toString());
             dismiss();
             return true;
         }

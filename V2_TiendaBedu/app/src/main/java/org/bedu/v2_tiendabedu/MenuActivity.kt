@@ -8,9 +8,10 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.fragment.app.Fragment
 import org.bedu.v2_tiendabedu.activities.login.LoginActivity
+import org.bedu.v2_tiendabedu.activities.user.AccountDetailsActivity
 import org.bedu.v2_tiendabedu.databinding.ActivityMenuBinding
 import org.bedu.v2_tiendabedu.models.inventario.Inventario
-import org.bedu.v2_tiendabedu.utilitis.ACCESCONTROL
+import org.bedu.v2_tiendabedu.utilitis.*
 import org.bedu.v2_tiendabedu.utilitis.SharedPrfs.Companion.cleanUserPreferences
 
 //import org.bedu.v2_tiendabedu.utilitis.SharedPrfs.Companion.cleanUserPreferences
@@ -67,11 +68,11 @@ class MenuActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when(item.itemId){
             R.id.userClose -> {
+                TiendaService.logout(this)
                 cleanUserPreferences(this)
                 finish()
                 val intent = Intent(this, LoginActivity::class.java)
                 startActivity(intent)
-                //System.exit(0)
                 true
             }
             R.id.userDetails -> {
@@ -84,6 +85,7 @@ class MenuActivity : AppCompatActivity() {
         }
         return super.onOptionsItemSelected(item)
     }
+
 
     private fun createFragments() {
         binding.bottomNavigationView.setOnItemSelectedListener {

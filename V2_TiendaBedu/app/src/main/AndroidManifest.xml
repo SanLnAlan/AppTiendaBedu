@@ -20,7 +20,7 @@
         tools:ignore="GoogleAppIndexingWarning"
         tools:targetApi="31">
         <activity
-            android:name=".AccountDetailsActivity"
+            android:name=".activities.user.AccountDetailsActivity"
             android:exported="false" />
         <activity
             android:name=".activities.login.ResetPassword"

@@ -1,4 +1,4 @@
-package org.bedu.v2_tiendabedu;
+package org.bedu.v2_tiendabedu.activities.user;
 
 import android.os.Bundle;
 
@@ -16,23 +16,26 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.bedu.v2_tiendabedu.R;
+
+
 /**
  * A simple {@link DialogFragment} subclass.
- * Use the {@link EditLastnameFragment#newInstance} factory method to
+ * Use the {@link EditNameFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class EditLastnameFragment extends DialogFragment implements TextView.OnEditorActionListener {
+public class EditNameFragment extends DialogFragment implements TextView.OnEditorActionListener {
     private EditText editText;
 
     // 1. Defines the listener interface with a method passing back data result.
-    public interface EditLastnameDialogListener {
-        void onFinishEditDialogLn(String inputText);
+    public interface EditNameDialogListener {
+        void onFinishEditDialogN(String inputText);
     }
 
-    public EditLastnameFragment(){ }
+    public EditNameFragment(){ }
 
-    public static EditLastnameFragment newInstance(String title) {
-        EditLastnameFragment frag = new EditLastnameFragment();
+    public static EditNameFragment newInstance(String title) {
+        EditNameFragment frag = new EditNameFragment();
         Bundle args = new Bundle();
         args.putString("title", title);
         frag.setArguments(args);
@@ -41,15 +44,17 @@ public class EditLastnameFragment extends DialogFragment implements TextView.OnE
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_edit_lastname, container);
+        return inflater.inflate(R.layout.fragment_edit_name, container);
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         // Get field and buttons from view
-        editText = view.findViewById(R.id.editLastnameField);
-        Button cancelButton = view.findViewById(R.id.cancelButtonLn);
-        Button acceptButton = view.findViewById(R.id.acceptButtonLn);
+        editText = view.findViewById(R.id.editNameField);
+        Button cancelButton = view.findViewById(R.id.cancelButton);
+        Button acceptButton = view.findViewById(R.id.acceptButton);
+        // Fetch arguments from bundle and set title
+        String title = getArguments().getString("title", "Ingrese su nombre");
         // Show soft keyboard automatically and request focus to field
         editText.requestFocus();
         getDialog().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
@@ -57,19 +62,20 @@ public class EditLastnameFragment extends DialogFragment implements TextView.OnE
         acceptButton.setOnClickListener(v -> {
             if(editText.getText().toString().equals("")){
                 Toast.makeText(getContext(), "El campo no puede estar vacio", Toast.LENGTH_SHORT).show();
-            } else {
-                EditLastnameFragment.EditLastnameDialogListener listener = (EditLastnameFragment.EditLastnameDialogListener) getActivity();
-                listener.onFinishEditDialogLn(editText.getText().toString());
+            } else{
+                EditNameDialogListener listener = (EditNameDialogListener) getActivity();
+                listener.onFinishEditDialogN(editText.getText().toString());
                 dismiss();
             }
         });
     }
+
     @Override
     public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
         if(EditorInfo.IME_ACTION_DONE == actionId) {
             // Return input text back to activity through the implemented listener
-            EditLastnameFragment.EditLastnameDialogListener listener = (EditLastnameFragment.EditLastnameDialogListener) getActivity();
-            listener.onFinishEditDialogLn(editText.getText().toString());
+            EditNameDialogListener listener = (EditNameDialogListener) getActivity();
+            listener.onFinishEditDialogN(editText.getText().toString());
             dismiss();
             return true;
         }

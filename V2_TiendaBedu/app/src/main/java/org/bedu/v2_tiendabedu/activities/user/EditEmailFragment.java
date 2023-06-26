@@ -1,4 +1,4 @@
-package org.bedu.v2_tiendabedu;
+package org.bedu.v2_tiendabedu.activities.user;
 
 import android.os.Bundle;
 
@@ -16,24 +16,20 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.bedu.v2_tiendabedu.R;
 
-/**
- * A simple {@link DialogFragment} subclass.
- * Use the {@link EditNameFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class EditNameFragment extends DialogFragment implements TextView.OnEditorActionListener {
+public class EditEmailFragment extends DialogFragment implements TextView.OnEditorActionListener {
     private EditText editText;
 
     // 1. Defines the listener interface with a method passing back data result.
-    public interface EditNameDialogListener {
-        void onFinishEditDialogN(String inputText);
+    public interface EditEmailDialogListener {
+        void onFinishEditDialogE(String inputText);
     }
 
-    public EditNameFragment(){ }
+    public EditEmailFragment(){ }
 
-    public static EditNameFragment newInstance(String title) {
-        EditNameFragment frag = new EditNameFragment();
+    public static EditEmailFragment newInstance(String title) {
+        EditEmailFragment frag = new EditEmailFragment();
         Bundle args = new Bundle();
         args.putString("title", title);
         frag.setArguments(args);
@@ -42,27 +38,25 @@ public class EditNameFragment extends DialogFragment implements TextView.OnEdito
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_edit_name, container);
+        return inflater.inflate(R.layout.fragment_edit_email, container);
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         // Get field and buttons from view
-        editText = view.findViewById(R.id.editNameField);
-        Button cancelButton = view.findViewById(R.id.cancelButton);
-        Button acceptButton = view.findViewById(R.id.acceptButton);
-        // Fetch arguments from bundle and set title
-        String title = getArguments().getString("title", "Ingrese su nombre");
+        editText = view.findViewById(R.id.editEmailField);
+        Button cancelButton = view.findViewById(R.id.cancelButtonE);
+        Button acceptButton = view.findViewById(R.id.acceptButtonE);
         // Show soft keyboard automatically and request focus to field
         editText.requestFocus();
         getDialog().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
         cancelButton.setOnClickListener(v -> dismiss());
         acceptButton.setOnClickListener(v -> {
-            if(editText.getText().toString().equals("")){
+            if(editText.getText().toString().equals("")) {
                 Toast.makeText(getContext(), "El campo no puede estar vacio", Toast.LENGTH_SHORT).show();
-            } else{
-                EditNameDialogListener listener = (EditNameDialogListener) getActivity();
-                listener.onFinishEditDialogN(editText.getText().toString());
+            } else {
+                EditEmailFragment.EditEmailDialogListener listener = (EditEmailFragment.EditEmailDialogListener) getActivity();
+                listener.onFinishEditDialogE(editText.getText().toString());
                 dismiss();
             }
         });
@@ -72,8 +66,8 @@ public class EditNameFragment extends DialogFragment implements TextView.OnEdito
     public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
         if(EditorInfo.IME_ACTION_DONE == actionId) {
             // Return input text back to activity through the implemented listener
-            EditNameDialogListener listener = (EditNameDialogListener) getActivity();
-            listener.onFinishEditDialogN(editText.getText().toString());
+            EditEmailFragment.EditEmailDialogListener listener = (EditEmailFragment.EditEmailDialogListener) getActivity();
+            listener.onFinishEditDialogE(editText.getText().toString());
             dismiss();
             return true;
         }

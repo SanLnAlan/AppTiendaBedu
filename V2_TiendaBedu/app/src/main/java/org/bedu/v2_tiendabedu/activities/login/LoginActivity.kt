@@ -1,102 +1,91 @@
 package org.bedu.v2_tiendabedu.activities.login
 
-import android.content.Intent
+import android.app.Activity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
-import org.bedu.v2_tiendabedu.MenuActivity
+import android.view.View
+import androidx.core.widget.doAfterTextChanged
+import com.google.firebase.FirebaseApp
+import com.google.firebase.FirebaseException
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import org.bedu.v2_tiendabedu.R
-import org.bedu.v2_tiendabedu.models.user.ResponseLogin
-import org.bedu.v2_tiendabedu.models.user.UserLogin
-import org.bedu.v2_tiendabedu.utilitis.ErrorMessage
-import org.bedu.v2_tiendabedu.utilitis.SharedPrfs.Companion.getUserPreferences
-import org.bedu.v2_tiendabedu.utilitis.SharedPrfs.Companion.saveUserPreferences
-import org.bedu.v2_tiendabedu.utilitis.TiendaService
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import org.bedu.v2_tiendabedu.databinding.ActivityLoginBinding
+import org.bedu.v2_tiendabedu.utilitis.Utils
+import org.bedu.v2_tiendabedu.utilitis.Utils.hideKeyboard
+import java.lang.Exception
+import org.bedu.v2_tiendabedu.MyApp
 
+class LoginActivity : Activity() {
 
-class LoginActivity : AppCompatActivity() {
-    var status: Boolean= false
-    var msg: Any= ""
-    var code: Int =0
+    private lateinit var binding: ActivityLoginBinding
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        setContentView(R.layout.activity_login)
-        val inputUserName: EditText = findViewById(R.id.txtEmail)
-        val inputPassword: EditText = findViewById(R.id.txtPass)
-        val btnLogin: Button = findViewById(R.id.btnLogin)
-        val loginErrorMsg: TextView = findViewById(R.id.login_error)
-        val lblResetPassword:TextView = findViewById(R.id.reset_password)
-        val lisP = getUserPreferences(this)
-
-        fun login(status:Boolean, code:Int, msg:Any){
-
-            if (status || lisP.isNotEmpty()){
-                val intent = Intent(this, MenuActivity::class.java)
-                startActivity(intent)
-
-            } else loginErrorMsg.text = msg as CharSequence?
-        }
-
-        login(false, 0, "")
-
-        btnLogin.setOnClickListener{
-
-            val userLogin = UserLogin(inputUserName.text.toString(),
-               inputPassword.text.toString())
-            val callLogin = TiendaService()
-            callLogin.apiService.postLoginUser(userLogin).enqueue(object :
-                Callback<ResponseLogin> {
-                override fun onResponse(
-                    call: Call<ResponseLogin>,
-                    response: Response<ResponseLogin>
-                ) {
-                    code = response.code()
-                    status = response.isSuccessful
-                    msg = if (!response.isSuccessful) {
-                        ErrorMessage.messege_error(response)
-
-                    }else{
-                        response.body()!!
-                        saveUserPreferences(response.body()!!, this@LoginActivity)
-                    }
-
-                    login(status, code, msg)
-
-                }
-
-                override fun onFailure(call: Call<ResponseLogin>, t: Throwable) {
-                    TODO("Not yet implemented")
-                }
-            })
-
-
-
-
-        }
-        val lblGotoRegister: TextView = findViewById(R.id.link_to_register)
-
-        lblGotoRegister.setOnClickListener{
-
-            val intent = Intent(this, RegisterUserActivity::class.java)
-            startActivity(intent)
-        }
-
-        lblResetPassword.setOnClickListener{
-
-            val intent = Intent(this, ResetPassword::class.java)
-            // start your next activity
-            startActivity(intent)
-
-        }
-
+        binding = ActivityLoginBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        auth = Firebase.auth
+        handleBtnLogin()
     }
 
+    private fun handleBtnLogin() {
+        binding.btnLogin.setOnClickListener {
+            it.hideKeyboard()
+
+            binding.btnLogin.visibility = View.GONE
+            binding.loading.visibility = View.VISIBLE
+
+            val email = binding.txtEmail.text.toString()
+            val password = binding.txtPass.text.toString()
+
+            signIn(email, password)
+        }
+
+
+        binding.txtEmail.doAfterTextChanged {
+            val email = binding.txtEmail.text.toString()
+            val password = binding.txtPass.text.toString()
+
+            binding.btnLogin.isEnabled = email.isNotEmpty() && password.isNotEmpty()
+        }
+
+        binding.txtPass.doAfterTextChanged {
+            val email = binding.txtEmail.text.toString()
+            val password = binding.txtPass.text.toString()
+
+            binding.btnLogin.isEnabled = email.isNotEmpty() && password.isNotEmpty()
+        }
+    }
+
+    private fun signIn(email: String, password: String) {
+        auth.signInWithEmailAndPassword(email,password)
+            .addOnCompleteListener(this) {
+                if(it.isSuccessful){
+                    Log.d(TAG, "signInWithEmail:success")
+                    val user = auth.currentUser
+                    updateUI(user, null)
+                } else {
+                    Log.w(TAG, "signInWithEmail:failure", it.exception)
+
+                }
+            }
+    }
+
+    private fun updateUI(user: FirebaseUser?, exception: Exception?) {
+        if (exception != null){
+            Utils.displaySnackBar(binding.root, exception.message.toString(),this,R.color.red)
+        } else {
+            Utils.displaySnackBar(binding.root, "Inicio de sesión exitoso",this,R.color.green)
+        }
+        binding.loading.visibility = View.GONE
+        binding.btnLogin.visibility = View.VISIBLE
+    }
+
+    companion object {
+        private const val TAG = "Email"
+    }
 }

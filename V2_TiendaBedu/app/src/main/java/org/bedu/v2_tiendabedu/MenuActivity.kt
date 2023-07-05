@@ -7,7 +7,7 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.fragment.app.Fragment
-import org.bedu.v2_tiendabedu.activities.login.LoginActivity
+import org.bedu.v2_tiendabedu.activities.login.LoginActivity2
 import org.bedu.v2_tiendabedu.activities.user.AccountDetailsActivity
 import org.bedu.v2_tiendabedu.databinding.ActivityMenuBinding
 import org.bedu.v2_tiendabedu.models.inventario.Inventario
@@ -71,7 +71,7 @@ class MenuActivity : AppCompatActivity() {
                 TiendaService.logout(this)
                 cleanUserPreferences(this)
                 finish()
-                val intent = Intent(this, LoginActivity::class.java)
+                val intent = Intent(this, LoginActivity2::class.java)
                 startActivity(intent)
                 true
             }

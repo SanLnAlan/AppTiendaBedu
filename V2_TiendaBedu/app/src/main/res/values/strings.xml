@@ -6,8 +6,8 @@
     <string name="olvide_password"><u>Olvide password!</u></string>
     <string name="login">Email</string>
     <string name="password">Password</string>
-    <string name="logging">enviar</string>
-    <string name="register"><u>registrate!</u></string>
+    <string name="logging">Ingresar</string>
+    <string name="register"><u>¿Aún no tienes cuenta? Regístrate</u></string>
     <string name="nombre">Nombre</string>
     <string name="apellidos">Apellidos</string>
     <string name="confirmar_password">Confirmar Password</string>

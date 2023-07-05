@@ -109,7 +109,7 @@ class ResetPassword : AppCompatActivity() {
 
         lblGotoLogging.setOnClickListener{
 
-            val intent = Intent(this, LoginActivity::class.java)
+            val intent = Intent(this, LoginActivity2::class.java)
             // start your next activity
             startActivity(intent)
 

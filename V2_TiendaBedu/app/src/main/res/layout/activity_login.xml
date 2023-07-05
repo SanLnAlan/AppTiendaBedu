@@ -1,83 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".activities.login.LoginActivity">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+    <ImageView
+        android:id="@+id/imageView"
+        android:src="@drawable/logo"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:background="@mipmap/ic_launcher"
+        android:layout_marginTop="48dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.02" />
+
+    <EditText
+        android:id="@+id/txtEmail"
+        android:layout_marginTop="48dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <EditText
+        android:id="@+id/txtPass"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Password"
+        android:layout_marginTop="24dp"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/txtEmail"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/txtEmail"
+        app:layout_constraintTop_toBottomOf="@+id/txtEmail"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:backgroundTint="@color/primary"
+        android:layout_margin="24dp"
+        android:paddingVertical="12dp"
+        android:paddingHorizontal="36dp"
+        android:text="@string/logging"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtPass" />
+
+
+    <TextView
+        android:id="@+id/link_to_register"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:orientation="vertical"
-        android:padding="30dip">
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_margin="24dp"
+        android:text="@string/register"
+        android:textColor="@color/third"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/btnLogin"
+        app:layout_constraintStart_toStartOf="@+id/btnLogin"
+        app:layout_constraintTop_toBottomOf="@+id/btnLogin">
+    </TextView>
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="100dip"
-            android:layout_marginTop="15dip"
-            android:layout_marginBottom="30dip"
-            android:src="@drawable/logo"/>
+    <ProgressBar
+        android:id="@+id/loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/link_to_register" />
 
-
-        <EditText
-            android:id="@+id/txtEmail"
-            android:layout_width="match_parent"
-            android:layout_height="50dip"
-            android:hint="@string/login"
-            android:importantForAutofill="no"
-            android:inputType="text" />
-
-        <EditText
-            android:id="@+id/txtPass"
-            android:layout_width="match_parent"
-            android:layout_height="50dip"
-            android:layout_marginTop="15dip"
-            android:layout_marginBottom="30dip"
-            android:hint="@string/password"
-            android:importantForAutofill="no"
-            android:inputType="textPassword" />
-
-
-        <Button
-            android:id="@+id/btnLogin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:paddingLeft="15dip"
-            android:paddingRight="15dip"
-            android:backgroundTint="@color/primary"
-            android:text="@string/logging" />
-
-        <TextView
-            android:id="@+id/link_to_register"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dip"
-            android:layout_marginBottom="40dip"
-            android:gravity="center"
-            android:text="@string/register"
-            android:textColor="@color/third"
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/login_error"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dip"
-            android:layout_marginBottom="40dip"
-            android:gravity="center"
-            android:textColor="@color/third"
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/reset_password"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dip"
-            android:layout_marginBottom="40dip"
-            android:gravity="center"
-            android:text="@string/olvide_password"
-            android:textColor="@color/third"
-            android:textSize="20sp" />
-    </LinearLayout>
-
-</ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

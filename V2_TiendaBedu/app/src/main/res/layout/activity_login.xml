@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+    <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:orientation="vertical"
@@ -46,6 +47,19 @@
             android:paddingRight="15dip"
             android:backgroundTint="@color/primary"
             android:text="@string/logging" />
+
+        <Button
+            android:id="@+id/btnLoginGoogle"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_gravity="center_horizontal"
+            android:backgroundTint="@color/white"
+            android:drawableEnd="@drawable/google_icon_ch"
+            android:paddingLeft="15dip"
+            android:paddingRight="15dip"
+            android:text="@string/loggingGoogle"
+            android:textColor="#000000"
+            app:strokeColor="@color/google" />
 
         <TextView
             android:id="@+id/link_to_register"

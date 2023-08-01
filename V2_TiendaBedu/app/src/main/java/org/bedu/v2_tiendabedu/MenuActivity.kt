@@ -70,6 +70,7 @@ class MenuActivity : AppCompatActivity() {
             R.id.userClose -> {
                 TiendaService.logout(this)
                 cleanUserPreferences(this)
+
                 finish()
                 val intent = Intent(this, LoginActivity::class.java)
                 startActivity(intent)

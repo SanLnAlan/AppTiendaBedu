@@ -19,4 +19,5 @@
     <string name="repita_contrasena">Repita su contraseña</string>
     <string name="notification_compra">Compra pendiente</string>
     <string name="description_text">descripción de la notificación</string>
+    <string name="loggingGoogle">Continuar con Google</string>
 </resources>

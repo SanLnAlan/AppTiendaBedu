@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import com.google.firebase.FirebaseApp
+
 const val DIRECCION_IP_LOCAL = "192.168.1.134"
 
 class MainActivity : AppCompatActivity() {
@@ -12,6 +14,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        FirebaseApp.initializeApp(this)
 
         iniciarBtn = findViewById(R.id.iniciar_btn)
 

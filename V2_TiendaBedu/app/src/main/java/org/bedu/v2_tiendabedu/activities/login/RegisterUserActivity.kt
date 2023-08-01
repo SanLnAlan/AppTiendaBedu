@@ -5,9 +5,15 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
+import com.google.firebase.FirebaseApp
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import org.bedu.v2_tiendabedu.R
 import org.bedu.v2_tiendabedu.models.user.RegisterUser
 import org.bedu.v2_tiendabedu.models.user.ResponseUser
@@ -29,9 +35,13 @@ class RegisterUserActivity : AppCompatActivity() {
     var msg: Any= ""
     var code: Int =0
 
+    private lateinit var auth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register_user)
+
+        FirebaseApp.initializeApp(this)
+        auth = Firebase.auth
 
         val btnRegister: Button = findViewById(R.id.btnRegister)
         val inputName:  EditText = findViewById(R.id.txtUserName)
@@ -191,6 +201,7 @@ class RegisterUserActivity : AppCompatActivity() {
             if(inputPassword.text.toString() == inputPasswordConf.text.toString()){
                 val (valUser, msgUser)= findUserVal(inputEmail.text.toString())
                 if (valUser){
+                    createAccountWithFirebase(inputEmail.text.toString(), inputPassword.text.toString())
                     val user = RegisterUser(
                         username=inputEmail.text.toString(),
                         nombres = inputName.text.toString(),
@@ -218,7 +229,7 @@ class RegisterUserActivity : AppCompatActivity() {
                         }
 
                         override fun onFailure(call: Call<ResponseUser>, t: Throwable) {
-                            TODO("Not yet implemented")
+                            Log.w("Retrofit","Error al registrar usuario")
                         }
 
                     })
@@ -242,6 +253,17 @@ class RegisterUserActivity : AppCompatActivity() {
             }
         }
 
+    }
+
+    private fun createAccountWithFirebase(email: String, password: String) {
+        auth.createUserWithEmailAndPassword(email, password)
+            .addOnCompleteListener(this){
+                if(it.isSuccessful){
+                    Log.d("registro","createAccount: success")
+                } else {
+                    Log.w("registro","createAccount: failure", it.exception)
+                }
+            }
     }
 
     private fun activateButton(): Boolean {

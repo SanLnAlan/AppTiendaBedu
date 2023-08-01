@@ -27,6 +27,15 @@ class SharedPrfs {
                 .apply()
         }
 
+        fun saveUserPreferencesFromGoogle(email: String, token: String, caducidad: String, context: Context){
+            preferences = context.getSharedPreferences(USUARIOS_PREFS, Context.MODE_PRIVATE)
+            preferences.edit()
+                .putString(FECHA_CADUCIDAD, "")
+                .putString(USER, email)
+                .putString(TOKEN, "")
+                .apply()
+        }
+
         fun getUserPreferences(context: Context): List<String?> {
             preferences = context.getSharedPreferences(USUARIOS_PREFS, Context.MODE_PRIVATE)
 

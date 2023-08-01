@@ -42,6 +42,7 @@
     <string name="description_text">descripción de la notificación</string>
     <string name="compraNotificationTitle">Carrito pendiente</string>
     <string name="compraNotificationtext">Estas a unos pasos de completar tu compra</string>
+    <string name="loggingGoogle">Continuar con Google</string>
 
     <string-array name="type_model">
         <item>Selecciona tipo Producto</item>

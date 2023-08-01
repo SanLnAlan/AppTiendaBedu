@@ -65,7 +65,9 @@ class LoginActivity : AppCompatActivity() {
         login(false, 0, "")
 
         btnLogin.setOnClickListener{
-            loginUserWithFirebase(inputUserName.text.toString(), inputPassword.text.toString())
+            if (inputUserName.text.isNotEmpty() and inputPassword.text.isNotEmpty()){
+                loginUserWithFirebase(inputUserName.text.toString(), inputPassword.text.toString())
+            }
             val userLogin = UserLogin(inputUserName.text.toString(),
                inputPassword.text.toString())
             val callLogin = TiendaService()
@@ -155,9 +157,6 @@ class LoginActivity : AppCompatActivity() {
                     FirebaseAuth.getInstance().signInWithCredential(credential).addOnCompleteListener{
                         if (it.isSuccessful){
                             Log.i("GoogleIN","success")
-                            Log.i("GoogleIN",account.email.toString())
-                            Log.i("GoogleIN",account.isExpired.toString())
-                            Log.i("GoogleIN",account.idToken.toString())
                             saveUserPreferencesFromGoogle(
                                     account.email.toString(),
                                     account.isExpired.toString(),

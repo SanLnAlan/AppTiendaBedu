@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'com.google.gms.google-services'
+    id 'com.google.firebase.crashlytics'
 }
 
 android {
@@ -72,6 +73,8 @@ dependencies {
 
     implementation platform('com.google.firebase:firebase-bom:32.2.0')
     implementation("com.google.android.gms:play-services-auth:20.6.0")
+    implementation 'com.google.firebase:firebase-crashlytics-ktx'
+    implementation 'com.google.firebase:firebase-analytics-ktx'
     // Dependencias para uso de la api
 
     implementation "com.squareup.picasso:picasso:2.71828"

@@ -8,7 +8,6 @@ import org.bedu.v2_tiendabedu.DIRECCION_IP_LOCAL
 import org.bedu.v2_tiendabedu.models.user.*
 import retrofit2.*
 import retrofit2.converter.gson.GsonConverterFactory
-import kotlin.properties.Delegates
 
 class TiendaService {
 

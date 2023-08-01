@@ -1,5 +1,6 @@
 package org.bedu.v2_tiendabedu
 
+
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -9,8 +10,11 @@ import com.google.firebase.FirebaseApp
 
 const val DIRECCION_IP_LOCAL = "192.168.1.134"
 
+
+
 class MainActivity : AppCompatActivity() {
     private lateinit var iniciarBtn: Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)

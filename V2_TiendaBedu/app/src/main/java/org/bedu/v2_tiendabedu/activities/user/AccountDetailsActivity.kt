@@ -58,7 +58,7 @@ class AccountDetailsActivity : AppCompatActivity(),
                     "Perfil del usuario" else "Error", Toast.LENGTH_LONG).show()
             }
             override fun onFailure(call: Call<ResponseUser>, t: Throwable) {
-                TODO("Not yet implemented")
+                Toast.makeText(this@AccountDetailsActivity,"Error de conexión.",Toast.LENGTH_SHORT).show()
             }
         })
         buttonName.setOnClickListener {showEdit("fragment_edit_name")}

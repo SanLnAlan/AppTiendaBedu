@@ -4,6 +4,7 @@ package org.bedu.v2_tiendabedu.utilitis
 import android.content.Context
 import android.widget.Toast
 import okhttp3.OkHttpClient
+import org.bedu.v2_tiendabedu.DIRECCION_IP_LOCAL
 import org.bedu.v2_tiendabedu.models.user.*
 import retrofit2.*
 import retrofit2.converter.gson.GsonConverterFactory
@@ -13,14 +14,14 @@ class TiendaService {
         // Instancia de Retrofit
        private fun getRetrofit():Retrofit{
             return Retrofit.Builder()
-                .baseUrl("http://192.168.1.64:8005/")
+                .baseUrl("http://${DIRECCION_IP_LOCAL}:8005/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
         }
 
        fun getRetrofitHeaders(token: String):Retrofit{
            return Retrofit.Builder()
-               .baseUrl("http://192.168.1.64:8005/")
+               .baseUrl("http://${DIRECCION_IP_LOCAL}:8005/")
                .addConverterFactory(GsonConverterFactory.create())
                .client(getclient(token))
                .build()
@@ -58,7 +59,7 @@ class TiendaService {
                          "Sesión finaliza" else "Error", Toast.LENGTH_LONG).show()
                  }
                  override fun onFailure(call: Call<Unit>, t: Throwable) {
-                     TODO("Not yet implemented")
+                     Toast.makeText(context,"Error de conexión.",Toast.LENGTH_SHORT).show()
                  }
              })
 
@@ -78,7 +79,7 @@ class TiendaService {
                          "Nombres actualizados" else "Error", Toast.LENGTH_LONG).show()
                  }
                  override fun onFailure(call: Call<Unit>, t: Throwable) {
-                     TODO("Not yet implemented")
+                     Toast.makeText(context,"Error de conexión.",Toast.LENGTH_SHORT).show()
                  }
              })
 
@@ -98,7 +99,7 @@ class TiendaService {
                          "Apellidos actualizados" else "Error", Toast.LENGTH_LONG).show()
                  }
                  override fun onFailure(call: Call<Unit>, t: Throwable) {
-                     TODO("Not yet implemented")
+                     Toast.makeText(context,"Error de conexión.",Toast.LENGTH_SHORT).show()
                  }
              })
 
@@ -118,7 +119,7 @@ class TiendaService {
                          "Email actualizados" else "Error", Toast.LENGTH_LONG).show()
                  }
                  override fun onFailure(call: Call<Unit>, t: Throwable) {
-                     TODO("Not yet implemented")
+                     Toast.makeText(context,"Error de conexión.",Toast.LENGTH_SHORT).show()
                  }
              })
 
@@ -138,15 +139,10 @@ class TiendaService {
                          "Passwors actualizado" else "Error", Toast.LENGTH_LONG).show()
                  }
                  override fun onFailure(call: Call<Unit>, t: Throwable) {
-                     TODO("Not yet implemented")
+                     Toast.makeText(context,"Error de conexión.",Toast.LENGTH_SHORT).show()
                  }
              })
-
          }
-
-
-
-
      }
 
 }

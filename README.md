@@ -43,8 +43,21 @@ La aplicación se trata de una tienda en línea, en la que se puede escoger entr
 *Imagen 2: Catálogo de productos*
 
 
-## Información de contacto
+## Instrucciones para conexión con servidor
 
+1. Descomprimir la carpeta https://drive.google.com/file/d/1bH2ywJ66-4tS60l1TNNiN0f5KuHMRYPd/view?usp=drive_link
+2. Desde terminal ubicarse dentro de la carpeta descomprimida y a su vez dentro de la carpeta tienda-backend
+3. con un ls comprobar que se encuentren los archivos docker-compose
+4. Ejecutar los siguientes comandos:
+   a. docker-compose build
+   b. docker-compose up
+5. Obtener la dirección Ip local y asignarla en el archivo MainActivity.kt en la constante llamada DIRECCION_IP_LOCAL 
+
+[Video](https://drive.google.com/file/d/1yVP39S240DmWAEwA1B0MtOlGkm7yITrZ/view?usp=drive_link) detalle de la aplicación.
+
+
+
+## Información de contacto
 
 Cualquier aclaración dirigirse con:
 
@@ -52,6 +65,3 @@ Cualquier aclaración dirigirse con:
 * Luis Fernando Pedraza Estañol (luisfedranol@gmail.com)
 * Marco Antonio Mojica Martinez (mojicamarc@gmail.com)
 * Carlos Armando Morales Bautista (carloamoraleb@gmail.com)
-
-
-[Video](https://drive.google.com/file/d/1SFgEwrkA0YMekmG8rYv0nF1wP5dVsUny/view?usp=share_link) detalle de la aplicación.

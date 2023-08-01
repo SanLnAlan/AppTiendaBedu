@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+const val DIRECCION_IP_LOCAL = "192.168.1.134"
 
 
 

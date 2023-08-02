@@ -2,6 +2,7 @@ package org.bedu.v2_tiendabedu.activities.user
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
@@ -44,23 +45,27 @@ class AccountDetailsActivity : AppCompatActivity(),
         lastnameText = findViewById(R.id.lastname)
         emailText = findViewById(R.id.email)
 
-        val (apiDetails, user) = TiendaService.serviceToken(this)
-        apiDetails.getUserDetail(email = user!!).enqueue(object : Callback<ResponseUser> {
-            override fun onResponse(call: Call<ResponseUser>, response: Response<ResponseUser>) {
-                if (!response.isSuccessful) {
-                    ErrorMessage.messege_error(response)
-                }else{
-                    nameText.text = response.body()?.nombres ?: ""
-                    lastnameText.text = response.body()?.apellidos ?: ""
-                    emailText.text = response.body()?.email ?: ""
+        try {
+            val (apiDetails, user) = TiendaService.serviceToken(this)
+            apiDetails.getUserDetail(email = user!!).enqueue(object : Callback<ResponseUser> {
+                override fun onResponse(call: Call<ResponseUser>, response: Response<ResponseUser>) {
+                    if (!response.isSuccessful) {
+                        ErrorMessage.messege_error(response)
+                    }else{
+                        nameText.text = response.body()?.nombres ?: ""
+                        lastnameText.text = response.body()?.apellidos ?: ""
+                        emailText.text = response.body()?.email ?: ""
+                    }
+                    Toast.makeText(this@AccountDetailsActivity, if (response.code()==200)
+                        "Perfil del usuario" else "Error", Toast.LENGTH_LONG).show()
                 }
-                Toast.makeText(this@AccountDetailsActivity, if (response.code()==200)
-                    "Perfil del usuario" else "Error", Toast.LENGTH_LONG).show()
-            }
-            override fun onFailure(call: Call<ResponseUser>, t: Throwable) {
-                Toast.makeText(this@AccountDetailsActivity,"Error de conexión.",Toast.LENGTH_SHORT).show()
-            }
-        })
+                override fun onFailure(call: Call<ResponseUser>, t: Throwable) {
+                    Toast.makeText(this@AccountDetailsActivity,"Error de conexión.",Toast.LENGTH_SHORT).show()
+                }
+            })
+        } catch (er: Exception){
+            Log.e("retrofit",er.toString())
+        }
         buttonName.setOnClickListener {showEdit("fragment_edit_name")}
         buttonLastname.setOnClickListener {showEdit("fragment_edit_lastname")}
         buttonEmail.setOnClickListener {showEdit("fragment_edit_email")}

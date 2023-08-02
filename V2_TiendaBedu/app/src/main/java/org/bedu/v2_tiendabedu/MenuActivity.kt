@@ -62,15 +62,31 @@ class MenuActivity : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         val inflater =  menuInflater
         inflater.inflate(R.menu.user_menu, menu)
+
+        val menuItemToHide = menu?.findItem(R.id.userDetails)
+
+        try{
+            TiendaService.logout(this)
+            menuItemToHide?.isVisible = true
+        }catch (er: Exception){
+            Log.e("retrofit",er.toString())
+            menuItemToHide?.isVisible = false
+        }
+
         return super.onCreateOptionsMenu(menu)
+
+
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when(item.itemId){
             R.id.userClose -> {
-                TiendaService.logout(this)
+                try{
+                    TiendaService.logout(this)
+                }catch (er: Exception){
+                    Log.e("retrofit",er.toString())
+                }
                 cleanUserPreferences(this)
-
                 finish()
                 val intent = Intent(this, LoginActivity::class.java)
                 startActivity(intent)

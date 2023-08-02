@@ -58,7 +58,6 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var downloadController: DownloadController
 
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 

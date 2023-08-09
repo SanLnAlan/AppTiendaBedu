@@ -22,7 +22,7 @@ Para ello seguir las siguientes instruciones:
 
 Al compilar el el MainActivity.kt se observará la siguiente pantalla:
 
-![](https://github.com/SanLnAlan/AppTiendaBedu/blob/main/Im%C3%A1genes_TiendaBedu/login_TiendaBedu.jpeg)
+![](https://github.com/SanLnAlan/AppTiendaBedu/blob/main/Im%C3%A1genes_TiendaBedu/org.bedu.v2_tiendabedu_log.jpg)
 
 *Imagen 1: Pantalla de inicio de sesión*
 
@@ -33,6 +33,10 @@ Email: admin@bedu.com
 
 Cotraseña: password
 
+O en su defecto, se puede iniciar sesión directamente con una cuenta google:
+
+![](https://github.com/SanLnAlan/AppTiendaBedu/blob/main/Im%C3%A1genes_TiendaBedu/com.google.android.gms.jpg)
+*Imagen 2: Log in con cuenta de google*
 
 ## Acerca de
 
@@ -40,7 +44,19 @@ La aplicación se trata de una tienda en línea, en la que se puede escoger entr
 
 ![](https://github.com/SanLnAlan/AppTiendaBedu/blob/main/Im%C3%A1genes_TiendaBedu/catalogo_TiendaBedu.jpeg)
 
-*Imagen 2: Catálogo de productos*
+*Imagen 3: Catálogo de productos*
+
+Una vez seleccionado los productos a comprar, se puede dirigir a la pestaña de carrito para proceder con la compra:
+
+![](https://github.com/SanLnAlan/AppTiendaBedu/blob/main/Im%C3%A1genes_TiendaBedu/image.png)
+
+*Imagen 4: Carrito de compra*
+
+Así como también la app cuenta con una pestaña destinada al control de inventario y permite agregar un nuevo producto a la venta mediante un formulario:
+
+![](https://github.com/SanLnAlan/AppTiendaBedu/blob/main/Im%C3%A1genes_TiendaBedu/inventario.jpg)
+
+*Imagen 5: formulario para agregar un nuevo producto*
 
 
 ## Instrucciones para conexión con servidor

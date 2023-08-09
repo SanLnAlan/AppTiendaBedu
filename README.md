@@ -22,7 +22,7 @@ Para ello seguir las siguientes instruciones:
 
 Al compilar el el MainActivity.kt se observará la siguiente pantalla:
 
-![](https://github.com/SanLnAlan/AppTiendaBedu/blob/main/Im%C3%A1genes_TiendaBedu/org.bedu.v2_tiendabedu_log.jpg)
+![](https://github.com/SanLnAlan/AppTiendaBedu/blob/main/Im%C3%A1genes_TiendaBedu/org.bedu.v2_tiendabedu_log.jpg =600x800)
 
 *Imagen 1: Pantalla de inicio de sesión*
 
@@ -35,8 +35,8 @@ Cotraseña: password
 
 O en su defecto, se puede iniciar sesión directamente con una cuenta google:
 
-![](https://github.com/SanLnAlan/AppTiendaBedu/blob/main/Im%C3%A1genes_TiendaBedu/com.google.android.gms.jpg)
-*Imagen 2: Log in con cuenta de google*
+![*Imagen 2: Log in con cuenta de google*](https://github.com/SanLnAlan/AppTiendaBedu/blob/main/Im%C3%A1genes_TiendaBedu/com.google.android.gms.jpg)
+*Imagen 2: Log-in con cuenta de google*
 
 ## Acerca de
 

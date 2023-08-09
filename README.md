@@ -22,7 +22,7 @@ Para ello seguir las siguientes instruciones:
 
 Al compilar el el MainActivity.kt se observará la siguiente pantalla:
 
-![](https://github.com/SanLnAlan/AppTiendaBedu/blob/main/Im%C3%A1genes_TiendaBedu/org.bedu.v2_tiendabedu_log.jpg =600x800)
+![](https://github.com/SanLnAlan/AppTiendaBedu/blob/main/Im%C3%A1genes_TiendaBedu/org.bedu.v2_tiendabedu_log.jpg =300x400)
 
 *Imagen 1: Pantalla de inicio de sesión*
 
